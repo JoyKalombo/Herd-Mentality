@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
+import json
 
 # --- Load Environment Variables ---
 load_dotenv()
@@ -24,7 +25,8 @@ openai.api_key = api_key
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase-creds.json")
+    firebase_creds = json.loads(st.secrets["firebase_creds"])
+    cred = credentials.Certificate(firebase_creds)
     firebase_admin.initialize_app(cred, {
         'databaseURL': os.getenv("FIREBASE_DB_URL")
     })
