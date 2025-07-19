@@ -1,0 +1,39 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+env/
+.venv/
+venv/
+ENV/
+
+# Ignore IDE files (for PyCharm, VSCode, etc.)
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+
+# Ignore secrets and config
+.env
+firebase-creds.json
+*.pem
+*.key
+
+# Ignore logs and output
+*.log
+
+# Ignore Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore compiled files
+*.so
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore SQLite database
+*.sqlite3
