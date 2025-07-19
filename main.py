@@ -3,7 +3,7 @@ import random
 import time
 import os
 import re
-from openai import OpenAI
+import openai
 from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, db
@@ -11,7 +11,7 @@ from difflib import SequenceMatcher
 
 # --- Load Environment Variables ---
 load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = api_key
 model = os.getenv("OPENAI_MODEL")
 
 # --- Setup OpenAI Client ---
@@ -60,24 +60,26 @@ def clear_room(room_id):
 
 # --- AI Helpers ---
 def get_ai_prompt():
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model=model,
         messages=[
             {"role": "system", "content": "Generate a fun, simple party game question for a game like 'Herd Mentality'. Just return the question."},
             {"role": "user", "content": "Give me a prompt."}
         ]
     )
-    return response.choices[0].message.content.strip()
+    return response.choices[0].message["content"].strip()
+
 
 def get_ai_answer(prompt):
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model=model,
         messages=[
             {"role": "system", "content": "Give a one- or two-word answer to the following question. Only reply with the likely most common or 'herd' answer."},
-            {"role": "user", "content": f"{prompt}"}
+            {"role": "user", "content": prompt}
         ]
     )
-    return response.choices[0].message.content.strip()
+    return response.choices[0].message["content"].strip()
+
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
