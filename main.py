@@ -29,8 +29,6 @@ if not firebase_admin._apps:
         'databaseURL': os.getenv("FIREBASE_DB_URL")
     })
 
-
-
 # --- Firebase Helpers ---
 def set_question(room_id, question):
     db.reference(f"herd_rooms/{room_id}/question").set(question)
@@ -40,12 +38,25 @@ def get_question(room_id):
 
 def submit_answer(room_id, player_name, answer):
     db.reference(f"herd_rooms/{room_id}/answers/{player_name}").set(answer)
+    db.reference(f"herd_rooms/{room_id}/players/{player_name}").set(True)
 
 def get_all_answers(room_id):
     return db.reference(f"herd_rooms/{room_id}/answers").get() or {}
 
+def get_player_list(room_id):
+    return db.reference(f"herd_rooms/{room_id}/players").get() or {}
+
+def increment_score(room_id, player_name):
+    ref = db.reference(f"herd_rooms/{room_id}/scores/{player_name}")
+    current = ref.get() or 0
+    ref.set(current + 1)
+
+def get_scores(room_id):
+    return db.reference(f"herd_rooms/{room_id}/scores").get() or {}
+
 def clear_room(room_id):
-    db.reference(f"herd_rooms/{room_id}").delete()
+    db.reference(f"herd_rooms/{room_id}/question").delete()
+    db.reference(f"herd_rooms/{room_id}/answers").delete()
 
 # --- AI Helpers ---
 def get_ai_prompt():
@@ -83,7 +94,15 @@ room_id = st.text_input("Enter Room Code (e.g., room123)")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
+# Check player name reuse
+name_taken = False
 if room_id and player_name:
+    players = get_player_list(room_id)
+    name_taken = any(clean(p) == clean(player_name) for p in players)
+    if name_taken:
+        st.warning("That player name is already taken in this room.")
+
+if room_id and player_name and not name_taken:
     if is_host:
         if st.button("🎲 Generate Question"):
             question = get_ai_prompt()
@@ -113,15 +132,33 @@ if room_id and player_name:
 
                 st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
                 for player, answer in answers.items():
-                    match = "✅" if is_match(answer, herd_answer) else "❌"
-                    st.write(f"{player}: {answer} {match}")
+                    match = is_match(answer, herd_answer)
+                    if match:
+                        increment_score(room_id, player)
+                    symbol = "✅" if match else "❌"
+                    st.write(f"{player}: {answer} {symbol}")
+
+                st.markdown("---")
+                st.markdown("### 🏆 Scoreboard")
+                scores = get_scores(room_id)
+                sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
+                for player, score in sorted_scores:
+                    st.write(f"{player}: {score} point(s)")
             else:
                 st.warning("Need at least 2 answers to determine the herd.")
 
         if st.button("Clear Room (Host Only)") and is_host:
             clear_room(room_id)
             st.success("Room cleared. Ready for new round.")
+
+        st.markdown("---")
+        st.markdown("### 👥 Players in Room")
+        players = get_player_list(room_id)
+        for player in players:
+            st.write(f"- {player}")
     else:
         st.info("No question has been set for this room yet.")
+elif name_taken:
+    st.stop()
 else:
     st.warning("Please enter both room code and your name to play.")
