@@ -11,7 +11,7 @@ from difflib import SequenceMatcher
 
 # --- Load Environment Variables ---
 load_dotenv()
-openai.api_key = api_key
+api_key = os.getenv("OPENAI_API_KEY")
 model = os.getenv("OPENAI_MODEL")
 
 # --- Setup OpenAI Client ---
@@ -20,7 +20,7 @@ if not api_key:
 if not model:
     raise ValueError("Missing OPENAI_MODEL in .env")
 
-client = OpenAI(api_key=api_key)
+openai.api_key = api_key
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
@@ -69,17 +69,15 @@ def get_ai_prompt():
     )
     return response.choices[0].message["content"].strip()
 
-
 def get_ai_answer(prompt):
     response = openai.ChatCompletion.create(
         model=model,
         messages=[
             {"role": "system", "content": "Give a one- or two-word answer to the following question. Only reply with the likely most common or 'herd' answer."},
-            {"role": "user", "content": prompt}
+            {"role": "user", "content": f"{prompt}"}
         ]
     )
     return response.choices[0].message["content"].strip()
-
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
