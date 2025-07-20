@@ -122,7 +122,7 @@ if room_id and player_name:
             else:
                 question_data = {"type": "open", "question": "What's your favourite food?"}  # Fallback question
             set_question(room_id, question_data)
-            set_herd_result(room_id, None)  # clear previous herd result
+            db.reference(f"herd_rooms/{room_id}/herd_result").delete()  # clear previous herd result
             st.success("New question set for the room!")
 
     question_data = get_question(room_id)
@@ -172,7 +172,7 @@ if room_id and player_name:
 
             if st.button("Clear Room (Host Only)"):
                 clear_room(room_id)
-                set_herd_result(room_id, None)
+                db.reference(f"herd_rooms/{room_id}/herd_result").delete()
                 st.success("Room cleared. Ready for new round.")
 
         # Display herd result for everyone if available
