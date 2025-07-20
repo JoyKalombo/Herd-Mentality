@@ -3,26 +3,10 @@ import random
 import time
 import os
 import re
-import openai
-from openai import OpenAI
-from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
 import json
-
-# --- Load Environment Variables ---
-load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
-model = os.getenv("OPENAI_MODEL")
-
-# --- Setup OpenAI Client ---
-if not api_key:
-    raise ValueError("Missing OPENAI_API_KEY in .env")
-if not model:
-    raise ValueError("Missing OPENAI_MODEL in .env")
-
-client = OpenAI(api_key=api_key)
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
@@ -60,33 +44,7 @@ def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/question").delete()
     db.reference(f"herd_rooms/{room_id}/answers").delete()
 
-# --- AI Helpers ---
-def get_ai_prompt():
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": "Generate a fun, simple party game question for a game like 'Herd Mentality'. Just return the question."},
-            {"role": "user", "content": "Give me a prompt."}
-        ]
-    )
-    return response.choices[0].message.content.strip()
-
-def get_ai_answer(prompt, question_data=None, players=None):
-    if question_data:
-        if question_data.get("type") == "pick" and players:
-            return random.choice(players)
-        elif question_data.get("type") == "mc" and "options" in question_data:
-            return random.choice(question_data["options"])
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": "Give a one- or two-word answer to the following question. Only reply with the likely most common or 'herd' answer."},
-            {"role": "user", "content": f"{prompt}"}
-        ]
-    )
-    return response.choices[0].message.content.strip()
-
-# --- Herd Group Detection (No AI) ---
+# --- Herd Group Detection ---
 def get_similarity(a, b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
@@ -106,7 +64,7 @@ def get_herd_group(answers, threshold=0.75):
     herd_players = [player for player, ans in answers.items() if get_similarity(ans, herd_text) >= threshold]
     return herd_text, herd_players
 
-# --- Question Bank (Structured & Categorised) ---
+# --- Question Bank ---
 def load_question_bank():
     def load_json(path):
         try:
@@ -151,7 +109,7 @@ if room_id and player_name:
                 question_data = random.choice(st.session_state.question_bank)
                 st.session_state.question_bank.remove(question_data)
             else:
-                question_data = {"type": "open", "question": get_ai_prompt()}
+                question_data = {"type": "open", "question": "What's your favourite food?"}  # Fallback question
             set_question(room_id, question_data)
             st.success("New question set for the room!")
 
@@ -160,7 +118,6 @@ if room_id and player_name:
         question_text = question_data if isinstance(question_data, str) else question_data.get("question", "")
         st.markdown(f"### Question: **{question_text}**")
 
-        # Display options for multiple choice
         if isinstance(question_data, dict) and question_data.get("type") == "mc" and "options" in question_data:
             player_answer = st.radio("Choose your answer:", question_data["options"], key="mc")
         else:
@@ -171,12 +128,6 @@ if room_id and player_name:
             st.success("Answer submitted!")
 
         if is_host:
-            if st.button("Get AI Answer"):
-                players = list(get_player_list(room_id).keys())
-                ai_answer = get_ai_answer(question_text, question_data, players)
-                submit_answer(room_id, "AI", ai_answer.strip())
-                st.success(f"AI answered: {ai_answer}")
-
             if st.button("Reveal Herd Answer"):
                 answers = get_all_answers(room_id)
                 if len(answers) >= 2:
