@@ -140,7 +140,7 @@ st.markdown("""
 st.title("🐏 Sheepish Mentality 🐑🧠🤣🌾 - Multiplayer Game")
 st.subheader("Play together in real time with your friends!")
 
-room_id = st.text_input("Enter Room Code (e.g., room123)")
+room_id = st.text_input("Enter Room Code (e.g., room123...✨ creativity is allowed... I promise) 🌀")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
