@@ -146,7 +146,8 @@ if room_id and player_name:
 
     question_data = get_question(room_id)
     if question_data:
-        st.markdown(f"### Question: **{question_data['question']}**")
+        question_text = question_data if isinstance(question_data, str) else question_data.get("question", "")
+        st.markdown(f"### Question: **{question_text}**")
 
         # Display options for multiple choice
         if question_data.get("type") == "mc" and "options" in question_data:
