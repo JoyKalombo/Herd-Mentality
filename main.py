@@ -7,6 +7,7 @@ import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
 import json
+from streamlit_autorefresh import st_autorefresh
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
@@ -101,6 +102,10 @@ st.subheader("Play together in real time with your friends!")
 room_id = st.text_input("Enter Room Code (e.g., room123...✨ creativity is allowed... I promise) 🌀")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
+
+# Auto-refresh for non-hosts to update the question
+if room_id and player_name and not is_host:
+    st_autorefresh(interval=3000, key="auto-refresh")  # Refresh every 3 seconds
 
 if room_id and player_name:
     if is_host:
