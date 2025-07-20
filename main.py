@@ -136,7 +136,9 @@ if room_id and player_name:
     if is_host:
         if st.button("🎲 Generate Question"):
             if st.session_state.question_bank:
-                question = st.session_state.question_bank.pop(0)
+                question = random.choice(st.session_state.question_bank)
+                st.session_state.question_bank.remove(question)
+
             else:
                 question = get_ai_prompt()
             set_question(room_id, question)
