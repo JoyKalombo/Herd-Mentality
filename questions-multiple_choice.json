@@ -234,5 +234,105 @@
   {
     "question": "Which phone got roasted the most in school?",
     "options": ["Nokia brick", "BlackBerry Curve", "Samsung Galaxy Mini", "Any Android, ever"]
+  },
+  {
+    "question": "What’s the best time to do a food shop?",
+    "options": ["Early morning", "After work", "Late at night", "Lunchtime on a weekday"]
+  },
+  {
+    "question": "Which type of hat has the most attitude?",
+    "options": ["Bucket hat", "Snapback", "Beret", "Beanie"]
+  },
+  {
+    "question": "What’s the best way to eat potatoes?",
+    "options": ["Chips", "Mashed", "Roasties", "Wedges"]
+  },
+  {
+    "question": "Which of these jobs has the worst small talk?",
+    "options": ["Hairdresser", "Taxi driver", "Dentist", "Personal trainer"]
+  },
+  {
+    "question": "What’s the most satisfying thing to clean?",
+    "options": ["Mirror", "Kitchen counter", "Phone screen", "Shower glass"]
+  },
+  {
+    "question": "Which of these would you most hate to be stuck in?",
+    "options": ["A lift", "A public toilet", "A traffic jam", "A group project"]
+  },
+  {
+    "question": "Which of these instantly ruins the vibe?",
+    "options": ["Bad WiFi", "Dead aux", "Cold food", "Group chat argument"]
+  },
+  {
+    "question": "What’s the best way to spend unexpected free time?",
+    "options": ["Nap", "Binge-watch a show", "Go for a walk", "Scroll endlessly"]
+  },
+  {
+    "question": "What’s the superior crisp flavour?",
+    "options": ["Salt & vinegar", "Cheese & onion", "Ready salted", "Prawn cocktail"]
+  },
+  {
+    "question": "Which emoji carries the most attitude?",
+    "options": ["💅", "🙄", "😏", "🤭"]
+  },
+  {
+    "question": "What’s the best background noise while working?",
+    "options": ["Music", "Rain sounds", "TV show", "Silence"]
+  },
+  {
+    "question": "Which drink makes you feel like you have your life together?",
+    "options": ["Smoothie", "Sparkling water", "Matcha latte", "Iced coffee"]
+  },
+  {
+    "question": "Which TV genre is the biggest guilty pleasure?",
+    "options": ["Reality dating shows", "True crime", "Cooking competitions", "Makeover shows"]
+  },
+  {
+    "question": "Which of these animals feels oddly wise?",
+    "options": ["Turtle", "Owl", "Elephant", "Dog"]
+  },
+  {
+    "question": "What’s the best thing to do during a power cut?",
+    "options": ["Light candles and chill", "Go to sleep", "Tell ghost stories", "Complain until it's back"]
+  },
+  {
+    "question": "Which object is most likely to come alive at night?",
+    "options": ["Toaster", "Toilet brush", "Houseplant", "TV remote"]
+  },
+  {
+    "question": "What would be the weirdest thing to find in your shoe?",
+    "options": ["Spaghetti", "A hamster", "A tiny version of yourself", "A cold slice of pizza"]
+  },
+  {
+    "question": "Which animal is most likely to start a podcast?",
+    "options": ["Parrot", "Sloth", "Goat", "Raccoon"]
+  },
+  {
+    "question": "If you were to marry a vegetable, which would it be?",
+    "options": ["Carrot", "Aubergine", "Broccoli", "Butternut squash"]
+  },
+  {
+    "question": "What would be the most dramatic way to leave a party?",
+    "options": ["Smoke bomb", "Backflip out the door", "Pretend to faint", "Leave mid-sentence"]
+  },
+  {
+    "question": "What’s the pettiest reason to cut someone off?",
+    "options": ["Didn’t say happy birthday", "Didn't laugh at your joke", "Liked your ex’s post", "Stole your seat"]
+  },
+  {
+    "question": "What’s the most toxic group chat behaviour?",
+    "options": ["Leaving without saying anything", "Screenshotting and sending to someone else", "Changing the name to shade someone", "Ignoring everyone for days"]
+  },
+  {
+    "question": "What’s the best way to win a petty argument?",
+    "options": ["Use big words", "Bring up ancient history", "Pretend not to care", "Cry"]
+  },
+  {
+    "question": "Which coworker type is most likely to snitch?",
+    "options": ["The overachiever", "The quiet one", "The one that ‘jokes’ too much", "The one who brings packed lunch daily"]
+  },
+  {
+    "question": "What’s the biggest betrayal?",
+    "options": ["Eating your food", "Talking behind your back", "Cancelling last minute", "Copying your outfit"]
   }
 ]
