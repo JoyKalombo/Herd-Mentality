@@ -178,7 +178,7 @@ if room_id and player_name:
         # Display herd result for everyone if available
         herd_data = get_herd_result(room_id)
         if herd_data:
-            if herd_data["herd_answer"]:
+            if herd_data.get("herd_answer"):
                 st.markdown(f"### 🧠 Herd Answer: **{herd_data['herd_answer']}**")
             else:
                 st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
