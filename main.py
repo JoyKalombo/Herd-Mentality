@@ -126,10 +126,16 @@ def clean(text):
     return re.sub(r'[^a-zA-Z0-9]', '', text.strip().lower())
 
 # --- Streamlit UI ---
-st.title("🐮 Herd Mentality - Multiplayer")
+st.markdown("""
+    <h1 style='text-align: center;'>🐑🐑🐑</h1>
+    <h2 style='text-align: center;'>Welcome to Sheepish Mentality!</h2>
+    <p style='text-align: center;'>🤪💭 (win by being a follower... or the one worth following!)</p>
+""", unsafe_allow_html=True)
+
+st.title("🐏 Sheepish Mentality 🐏😂🌾 - Multiplayer Game")
 st.subheader("Play together in real time with your friends!")
 
-room_id = st.text_input("Enter Room Code (e.g., room123)")
+room_id = st.text_input("Enter Room Code (e.g., room123... creativity is allowed)")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
@@ -150,7 +156,7 @@ if room_id and player_name:
         st.markdown(f"### Question: **{question_text}**")
 
         # Display options for multiple choice
-        if question_data.get("type") == "mc" and "options" in question_data:
+        if isinstance(question_data, dict) and question_data.get("type") == "mc" and "options" in question_data:
             player_answer = st.radio("Choose your answer:", question_data["options"], key="mc")
         else:
             player_answer = st.text_input("Your Answer")
@@ -160,7 +166,7 @@ if room_id and player_name:
             st.success("Answer submitted!")
 
         if st.button("Get AI Answer") and is_host:
-            ai_answer = get_ai_answer(question_data['question'])
+            ai_answer = get_ai_answer(question_text)
             submit_answer(room_id, "AI", ai_answer.strip())
             st.success(f"AI answered: {ai_answer}")
 
