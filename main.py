@@ -114,7 +114,11 @@ def get_cached_questions(n=20):
     return [get_ai_prompt() for _ in range(n)]
 
 if "question_bank" not in st.session_state:
-    st.session_state.question_bank = load_custom_questions() + get_cached_questions()
+    questions = load_custom_questions()
+    if not questions:
+        st.warning("No custom questions found. Please add questions to 'custom_questions.json'")
+    st.session_state.question_bank = questions
+
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
