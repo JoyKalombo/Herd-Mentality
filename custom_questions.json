@@ -17,22 +17,22 @@
   "Name something you'd hate to find in your bed.",
   "What's the best TV show ever?",
   "Name a smell that instantly makes you nostalgic.",
-  "What’s the first thing you’d buy if you won the lottery?",
+  "What's the first thing you'd buy if you won the lottery?",
   "What's the most universally disliked vegetable?",
   "Name a drink you associate with a party.",
   "What's the most boring sport to watch?",
   "Name a profession people lie about being.",
   "What's the best type of cheese?",
   "Name a condiment you couldn't live without.",
-  "What’s the scariest sea creature?",
+  "What's the scariest sea creature?",
   "What's a name that sounds powerful?",
   "What's the most awkward place to run into an ex?",
   "Name something people pretend to like.",
   "What's the worst chore in the house?",
   "What's the first thing you notice about someone?",
   "What's the most iconic decade for music?",
-  "What’s the best chocolate bar?",
-  "Name a fast food chain that’s secretly elite.",
+  "What's the best chocolate bar?",
+  "Name a fast food chain that's secretly elite.",
   "What's the worst time to get a phone call?",
   "What's a hobby everyone thinks they're good at?",
   "Name a superpower that would be more trouble than it's worth.",
@@ -40,89 +40,325 @@
   "What's something people always forget to pack for a holiday?",
   "What's the best way to start the day?",
   "What's a smell that instantly wakes you up?",
-  "What’s the best thing to dip chips in?",
-  "What’s the worst time of day?",
-  "What’s the ultimate comfort food?",
+  "What's the best thing to dip chips in?",
+  "What's the worst time of day?",
+  "What's the ultimate comfort food?",
   "What should you never say on a first date?",
-  "Name a kitchen item you wouldn’t want to live without.",
+  "Name a kitchen item you wouldn't want to live without.",
   "What's something you'd never want to find in your fridge?",
-  "What’s the most satisfying thing to pop?",
-  "Who’s the most iconic cartoon character?",
-  "What’s the most binge-worthy show on Netflix?",
-  "What’s a song that everyone pretends to know the lyrics to?",
-  "What’s the most quotable movie of all time?",
-  "Name a celebrity who’d be great at pub quizzes.",
-  "What’s the most overplayed song of all time?",
-  "What’s the best fictional villain?",
-  "What’s the worst thing to say in a group chat?",
-  "What’s the most awkward place to laugh?",
-  "What’s the best excuse to leave a boring party?",
-  "What’s a lie people tell at work?",
-  "What’s something you pretend to understand but don’t?",
+  "What's the most satisfying thing to pop?",
+  "Who's the most iconic cartoon character?",
+  "What's the most binge-worthy show on Netflix?",
+  "What's a song that everyone pretends to know the lyrics to?",
+  "What's the most quotable movie of all time?",
+  "Name a celebrity who'd be great at pub quizzes.",
+  "What's the most overplayed song of all time?",
+  "What's the best fictional villain?",
+  "What's the worst thing to say in a group chat?",
+  "What's the most awkward place to laugh?",
+  "What's the best excuse to leave a boring party?",
+  "What's a lie people tell at work?",
+  "What's something you pretend to understand but don't?",
   "Name a place people pretend they want to visit.",
-  "What’s the worst mode of transport?",
-  "Name a holiday destination that’s probably overrated.",
-  "What’s the worst seat on a plane?",
-  "What’s the most stressful part of travelling?",
+  "What's the worst mode of transport?",
+  "Name a holiday destination that's probably overrated.",
+  "What's the worst seat on a plane?",
+  "What's the most stressful part of travelling?",
   "What animal would make the worst pet?",
-  "What’s the most chaotic kitchen utensil?",
-  "What fruit sounds posh but isn’t?",
-  "What’s the least useful superpower?",
-  "What’s the funniest object to trip over?",
+  "What's the most chaotic kitchen utensil?",
+  "What fruit sounds posh but isn't?",
+  "What's the least useful superpower?",
+  "What's the funniest object to trip over?",
   "What would be the weirdest thing to find in a wallet?",
-  "What’s an emotion people pretend not to feel?",
-  "What’s the best feeling in the world?",
-  "What’s something that always cheers people up?",
-  "What’s a fear most people won’t admit?",
-  "What’s the most underrated human trait?",
-  "What’s an emotion that feels contagious?",
-  "What’s the most embarrassing emotion to show in public?",
-  "What’s the best kind of video to binge-watch on YouTube?",
+  "What's an emotion people pretend not to feel?",
+  "What's the best feeling in the world?",
+  "What's something that always cheers people up?",
+  "What's a fear most people won't admit?",
+  "What's the most underrated human trait?",
+  "What's an emotion that feels contagious?",
+  "What's the most embarrassing emotion to show in public?",
+  "What's the best kind of video to binge-watch on YouTube?",
   "Who is the most entertaining type of YouTuber?",
-  "What’s the worst kind of content on YouTube?",
-  "What’s the first thing you’d search if you opened YouTube right now?",
-  "What’s something that always shows up in your YouTube recommendations?",
-  "What’s a YouTube trend that needs to end?",
-  "What’s the most addictive type of content?",
-  "What’s the best exercise for people who hate exercise?",
-  "What’s the worst part of going to the gym?",
-  "What’s a sport people pretend to like?",
-  "What’s the most satisfying bodyweight exercise?",
-  "What’s a workout people say they do but probably don’t?",
-  "What’s the best post-workout snack?",
-  "What’s a fitness goal people lie about?",
-  "What’s the most annoying sound at home?",
-  "What’s something you always misplace?",
-  "What’s the worst thing to step on barefoot?",
-  "What’s the cosiest room in the house?",
-  "What’s the most unnecessary item in the kitchen?",
-  "What’s something everyone forgets to clean?",
-  "What’s the best thing about being at home?",
-   "What’s something people say they’ll start on Monday but never do?",
-  "What’s the most common New Year’s resolution?",
-  "What’s something people spend too much money on?",
-  "What’s the best time of day to shower?",
-  "What’s a habit that’s surprisingly hard to break?",
-  "What’s the best way to relax after a long day?",
-  "What’s the first thing most people do when they wake up?",
-  "What’s something people do just for the aesthetic?",
-  "What’s something you should do daily but don’t?",
-  "What’s a job people romanticise but wouldn’t actually enjoy?",
-  "What’s the most stressful job in the world?",
-  "What’s a job that sounds boring but pays well?",
-  "What’s a job that’s cooler in movies than real life?",
-  "What’s something people lie about on their CV?",
-  "What’s the worst thing about working in an office?",
-  "What’s the most common reason people leave a job?",
-  "What’s the dream job people secretly wish they had?",
-  "What’s a job you could never do?",
-  "What’s the most useful subject at school?",
-  "What’s the most pointless subject at school?",
+  "What's the worst kind of content on YouTube?",
+  "What's the first thing you'd search if you opened YouTube right now?",
+  "What's something that always shows up in your YouTube recommendations?",
+  "What's a YouTube trend that needs to end?",
+  "What's the most addictive type of content?",
+  "What's the best exercise for people who hate exercise?",
+  "What's the worst part of going to the gym?",
+  "What's a sport people pretend to like?",
+  "What's the most satisfying bodyweight exercise?",
+  "What's a workout people say they do but probably don't?",
+  "What's the best post-workout snack?",
+  "What's a fitness goal people lie about?",
+  "What's the most annoying sound at home?",
+  "What's something you always misplace?",
+  "What's the worst thing to step on barefoot?",
+  "What's the cosiest room in the house?",
+  "What's the most unnecessary item in the kitchen?",
+  "What's something everyone forgets to clean?",
+  "What's the best thing about being at home?",
+   "What's something people say they'll start on Monday but never do?",
+  "What's the most common New Year's resolution?",
+  "What's something people spend too much money on?",
+  "What's the best time of day to shower?",
+  "What's a habit that's surprisingly hard to break?",
+  "What's the best way to relax after a long day?",
+  "What's the first thing most people do when they wake up?",
+  "What's something people do just for the aesthetic?",
+  "What's something you should do daily but don't?",
+  "What's a job people romanticise but wouldn't actually enjoy?",
+  "What's the most stressful job in the world?",
+  "What's a job that sounds boring but pays well?",
+  "What's a job that's cooler in movies than real life?",
+  "What's something people lie about on their CV?",
+  "What's the worst thing about working in an office?",
+  "What's the most common reason people leave a job?",
+  "What's the dream job people secretly wish they had?",
+  "What's a job you could never do?",
+  "What's the most useful subject at school?",
+  "What's the most pointless subject at school?",
   "What subject do people pretend to understand?",
-  "What’s the easiest subject to bluff your way through?",
-  "What’s the most fun after-school club?",
-  "What’s the most dreaded school activity?",
-  "What’s the most iconic school trip destination?",
-  "What’s a skill you wish school taught?",
-  "What’s a school rule everyone secretly broke?"
+  "What's the easiest subject to bluff your way through?",
+  "What's the most fun after-school club?",
+  "What's the most dreaded school activity?",
+  "What's the most iconic school trip destination?",
+  "What's a skill you wish school taught?",
+  "What's a school rule everyone secretly broke?",
+  {
+    "question": "What's the best hot drink?",
+    "options": ["Tea", "Coffee", "Hot chocolate", "Mulled wine"]
+  },
+  {
+    "question": "Which pet is the most low-maintenance?",
+    "options": ["Cat", "Dog", "Fish", "Hamster"]
+  },
+  {
+    "question": "What would you bring to a desert island?",
+    "options": ["A book", "A knife", "Sunscreen", "A speaker"]
+  },
+  {
+    "question": "What’s the best way to spend a Sunday?",
+    "options": ["Watching TV", "Cleaning", "Going out", "Sleeping in"]
+  },
+  {
+    "question": "Which breakfast food reigns supreme?",
+    "options": ["Pancakes", "Cereal", "Eggs & toast", "Smoothie"]
+  },
+  {
+    "question": "Which school subject causes the most stress?",
+    "options": ["Maths", "Science", "English", "History"]
+  },
+  {
+    "question": "What’s the most overrated social media platform?",
+    "options": ["Instagram", "TikTok", "Twitter/X", "Facebook"]
+  },
+  {
+    "question": "What’s the first thing you do when you get home?",
+    "options": ["Take off your shoes", "Go to the fridge", "Sit on the sofa", "Check your phone"]
+  },
+  {
+    "question": "What’s the best type of weather?",
+    "options": ["Sunny and warm", "Rainy and cosy", "Cold and crisp", "Cloudy and mild"]
+  },
+  {
+    "question": "What’s the best way to watch a movie?",
+    "options": ["In a cinema", "On a sofa at home", "On a laptop in bed", "With friends and snacks"]
+  },
+  {
+    "question": "Which video game genre is the most fun?",
+    "options": ["Action", "Puzzle", "Sports", "Role-playing"]
+  },
+  {
+    "question": "What’s the best type of reality TV show?",
+    "options": ["Dating", "Cooking", "Survival", "Talent"]
+  },
+  {
+    "question": "What’s the best time to work out?",
+    "options": ["Early morning", "Midday", "Evening", "Whenever you feel like it"]
+  },
+  {
+    "question": "What’s the healthiest habit to develop?",
+    "options": ["Drinking more water", "Going to bed early", "Daily walks", "Meditation"]
+  },
+  {
+    "question": "What’s the best gym accessory?",
+    "options": ["Resistance bands", "Dumbbells", "Yoga mat", "Foam roller"]
+  },
+  {
+    "question": "Which chore do people procrastinate the most?",
+    "options": ["Doing the laundry", "Taking the bins out", "Washing the dishes", "Cleaning the bathroom"]
+  },
+  {
+    "question": "What’s the coziest item in a house?",
+    "options": ["Blanket", "Slippers", "Sofa", "Dressing gown"]
+  },
+  {
+    "question": "What’s the best room to nap in?",
+    "options": ["Bedroom", "Living room", "Home office", "Anywhere, if you’re tired enough"]
+  },
+  {
+    "question": "What’s the best part of the school day?",
+    "options": ["Lunch", "Break time", "Last lesson", "PE"]
+  },
+  {
+    "question": "What’s the most fun extracurricular activity?",
+    "options": ["Drama club", "Sports team", "Music group", "Debate club"]
+  },
+  {
+    "question": "Which school supply is most satisfying to buy?",
+    "options": ["Pens", "Notebooks", "Highlighters", "A fresh backpack"]
+  },
+  {
+    "question": "What’s the best way to wake up?",
+    "options": ["Naturally with sunlight", "Alarm clock", "Coffee smell", "Someone else waking you"]
+  },
+  {
+    "question": "Which pasta shape feels the fanciest?",
+    "options": ["Tagliatelle", "Penne", "Farfalle", "Spaghetti"]
+  },
+  {
+    "question": "Which item would most people rescue first in a fire (after people/pets)?",
+    "options": ["Phone", "Passport", "Laptop", "Wallet"]
+  },
+  {
+    "question": "What’s the best sauce?",
+    "options": ["Ketchup", "Mayo", "Barbecue", "Sweet chilli"]
+  },
+  {
+    "question": "What’s the most likely thing to derail a productive day?",
+    "options": ["Social media", "A nap", "TV", "Unexpected guest"]
+  },
+  {
+    "question": "Which smell is the nicest?",
+    "options": ["Fresh bread", "Cut grass", "Vanilla", "Petrol"]
+  },
+  {
+    "question": "What’s the most powerful household item?",
+    "options": ["Microwave", "Kettle", "Washing machine", "Vacuum"]
+  },
+  {
+    "question": "What’s the worst time to get hungry?",
+    "options": ["During a meeting", "On a bus", "While in bed", "Right after brushing teeth"]
+  },
+  {
+    "question": "What would you most likely do at 3 a.m.?",
+    "options": ["Sleep", "Overthink", "Eat", "Scroll your phone"]
+  },
+  {
+    "question": "What’s the best kind of birthday gift?",
+    "options": ["Something handmade", "Something expensive", "A surprise experience", "Cash"]
+  },
+  {
+    "question": "What’s the easiest thing to lie about?",
+    "options": ["Sleep schedule", "Gym habits", "Weekend plans", "Diet"]
+  },
+  {
+    "question": "Which smell would you bottle as a perfume?",
+    "options": ["Rain on pavement", "Crispy bacon", "Old books", "Freshly washed clothes"]
+  },
+  {
+    "question": "Which item do people most often borrow and never return?",
+    "options": ["Pen", "Charger", "Umbrella", "Lighter"]
+  },
+  {
+    "question": "What’s the best thing to wear on a lazy day?",
+    "options": ["Pyjamas", "Joggers", "Oversized hoodie", "Dressing gown"]
+  },
+  {
+    "question": "Which animal secretly runs the world?",
+    "options": ["Cats", "Pigeons", "Dolphins", "Rats"]
+  },
+  {
+    "question": "What's the most elite corner shop snack combo?",
+    "options": ["Lucozade & blue Doritos", "Ribena & Snickers", "Oreo & Yazoo", "Big up cookie & Rubicon Mango"]
+  },
+  {
+    "question": "What’s the most disrespectful time for someone to call your name from across the road?",
+    "options": ["When your trim is dead", "When you're with your mum", "When you're wearing sliders", "When you're deep in thought"]
+  },
+  {
+    "question": "What’s the most universal reaction when someone says 'allow it'?",
+    "options": ["Pause and laugh", "Back off immediately", "Double down", "Say 'say nothing fam'"]
+  },
+  {
+    "question": "What's the best chicken shop order?",
+    "options": ["Wings and chips with burger sauce", "Strip burger and Ribena", "Quarter pounder with cheese", "2-piece and fries with chilli sauce"]
+  },
+  {
+    "question": "What’s the most likely excuse to be late in South London?",
+    "options": ["Bus took long", "Had to help my nan", "Fell asleep still", "Had to pass through ends first"]
+  },
+  {
+    "question": "What's the most London way to say you're not interested?",
+    "options": ["Safe still", "Nah I’m good", "Say less", "I hear you but no"]
+  },
+  {
+    "question": "What's the unspoken code at the back of the bus?",
+    "options": ["Don't sit unless you're known", "Music is allowed, aux is sacred", "Back row = mandem", "Don't chat too loud unless it’s jokes"]
+  },
+  {
+    "question": "What's the most likely reason for a classroom shutdown?",
+    "options": ["Someone got roasted too hard", "Teacher stormed out", "Fire alarm", "Fight over a pen"]
+  },
+  {
+    "question": "Which shoe got rinsed the most in secondary school?",
+    "options": ["Black Air Forces", "Nike TNs", "Plimsolls from PE", "JD special Air Max"]
+  },
+  {
+    "question": "What’s the most elite drink to grab on the go?",
+    "options": ["Rubicon Mango", "Tropical Vibes", "Oasis", "Old school carton Ribena"]
+  },
+  {
+    "question": "What’s the most likely thing to get shouted from a passing car?",
+    "options": ["Wagwan!", "Ay yo big man!", "Safe g!", "Fix your trim!"]
+  },
+  {
+    "question": "What’s the most tactical seat on the top deck of a bus?",
+    "options": ["Front row for vibes", "Back row with the mandem", "Middle row to mind your business", "Next to the stairs to get off quick"]
+  },
+  {
+    "question": "What's the worst offence in a chicken shop?",
+    "options": ["Asking for ketchup only", "Not saying please", "Taking ages to order", "Telling them it's your first time"]
+  },
+  {
+    "question": "What’s the most iconic South London phrase?",
+    "options": ["Say nothing", "Swear down", "You're moist", "It’s not that deep"]
+  },
+  {
+    "question": "Which school drama caused the biggest uproar?",
+    "options": ["Someone took your blazer", "Someone snaked your bredrin", "A secret relationship got exposed", "A fake rumour spread in tutor time"]
+  },
+  {
+    "question": "What’s the ultimate budget meal from ends?",
+    "options": ["Wings & chips with drink for £2.50", "Beef patty in hardo bread", "Chips in a bun", "Noodles with ketchup at home"]
+  },
+  {
+    "question": "What’s the cheekiest thing someone could ask to borrow?",
+    "options": ["Your charger", "Your Oyster card", "Your headphones", "Your coat"]
+  },
+  {
+    "question": "What’s the go-to excuse when someone gets caught lacking?",
+    "options": ["I weren’t ready still", "I was bare tired", "It’s not that deep", "You man are moist anyway"]
+  },
+  {
+    "question": "What’s most likely to start an argument in a group chat?",
+    "options": ["No one replied", "Someone aired the joke", "Wrong person added", "Someone moved to someone’s ting"]
+  },
+  {
+    "question": "What’s the biggest lie someone from ends might tell?",
+    "options": ["'I’m five minutes away'", "'I know him from before'", "'I don’t rate her like that'", "'I’m not even bothered fam'"]
+  },
+  {
+    "question": "Which corner shop treat slaps the most after school?",
+    "options": ["Fizzy cola bottles", "Fudge bar", "Mini donuts in the bag", "Strawberry laces"]
+  },
+  {
+    "question": "What's the loudest item someone can bring to class?",
+    "options": ["Flamin’ Hot Wotsits", "Tesco meal deal bag", "Big bottle of Lucozade", "Family bag of Haribo"]
+  },
+  {
+    "question": "Which phone got roasted the most in school?",
+    "options": ["Nokia brick", "BlackBerry Curve", "Samsung Galaxy Mini", "Any Android, ever"]
+  }
 ]
