@@ -71,7 +71,12 @@ def get_ai_prompt():
     )
     return response.choices[0].message.content.strip()
 
-def get_ai_answer(prompt):
+def get_ai_answer(prompt, question_data=None, players=None):
+    if question_data:
+        if question_data.get("type") == "pick" and players:
+            return random.choice(players)
+        elif question_data.get("type") == "mc" and "options" in question_data:
+            return random.choice(question_data["options"])
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -135,7 +140,7 @@ st.markdown("""
 st.title("🐏 Sheepish Mentality 🐑🧠🤣🌾 - Multiplayer Game")
 st.subheader("Play together in real time with your friends!")
 
-room_id = st.text_input("Enter Room Code (e.g., room123... creativity is allowed... I promise)")
+room_id = st.text_input("Enter Room Code (e.g., room123)")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
@@ -167,7 +172,8 @@ if room_id and player_name:
 
         if is_host:
             if st.button("Get AI Answer"):
-                ai_answer = get_ai_answer(question_text)
+                players = list(get_player_list(room_id).keys())
+                ai_answer = get_ai_answer(question_text, question_data, players)
                 submit_answer(room_id, "AI", ai_answer.strip())
                 st.success(f"AI answered: {ai_answer}")
 
