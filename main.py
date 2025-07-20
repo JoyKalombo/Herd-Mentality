@@ -10,14 +10,11 @@ import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
 import json
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Load Environment Variables ---
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 model = os.getenv("OPENAI_MODEL")
-embedding_model = "text-embedding-3-small"
 
 # --- Setup OpenAI Client ---
 if not api_key:
@@ -84,27 +81,25 @@ def get_ai_answer(prompt):
     )
     return response.choices[0].message.content.strip()
 
-# --- Embedding Similarity ---
-def get_embedding(text):
-    response = client.embeddings.create(
-        input=text,
-        model=embedding_model
-    )
-    return np.array(response.data[0].embedding)
+# --- Herd Group Detection (No AI) ---
+def get_similarity(a, b):
+    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
-def get_herd_group(answers, threshold=0.85):
+def get_herd_group(answers, threshold=0.75):
     texts = list(answers.values())
-    embeddings = [get_embedding(text) for text in texts]
-    similarity_matrix = cosine_similarity(embeddings)
-    counts = [(similarity_matrix[i] > threshold).sum() for i in range(len(texts))]
-    max_count = max(counts)
-    if max_count <= 1:
-        return None  # no herd
-    herd_index = counts.index(max_count)
-    herd_answer = texts[herd_index]
-    herd_indices = [i for i, sim in enumerate(similarity_matrix[herd_index]) if sim > threshold]
-    herd_players = [list(answers.keys())[i] for i in herd_indices]
-    return herd_answer, herd_players
+    scores = [0] * len(texts)
+    for i in range(len(texts)):
+        for j in range(len(texts)):
+            if i != j and get_similarity(texts[i], texts[j]) >= threshold:
+                scores[i] += 1
+
+    max_score = max(scores)
+    if max_score == 0:
+        return None
+    herd_index = scores.index(max_score)
+    herd_text = texts[herd_index]
+    herd_players = [player for player, ans in answers.items() if get_similarity(ans, herd_text) >= threshold]
+    return herd_text, herd_players
 
 # --- Question Bank ---
 def load_custom_questions():
