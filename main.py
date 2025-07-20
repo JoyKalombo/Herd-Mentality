@@ -10,11 +10,14 @@ import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
 import json
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
 # --- Load Environment Variables ---
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 model = os.getenv("OPENAI_MODEL")
+embedding_model = "text-embedding-3-small"
 
 # --- Setup OpenAI Client ---
 if not api_key:
@@ -81,6 +84,28 @@ def get_ai_answer(prompt):
     )
     return response.choices[0].message.content.strip()
 
+# --- Embedding Similarity ---
+def get_embedding(text):
+    response = client.embeddings.create(
+        input=text,
+        model=embedding_model
+    )
+    return np.array(response.data[0].embedding)
+
+def get_herd_group(answers, threshold=0.85):
+    texts = list(answers.values())
+    embeddings = [get_embedding(text) for text in texts]
+    similarity_matrix = cosine_similarity(embeddings)
+    counts = [(similarity_matrix[i] > threshold).sum() for i in range(len(texts))]
+    max_count = max(counts)
+    if max_count <= 1:
+        return None  # no herd
+    herd_index = counts.index(max_count)
+    herd_answer = texts[herd_index]
+    herd_indices = [i for i, sim in enumerate(similarity_matrix[herd_index]) if sim > threshold]
+    herd_players = [list(answers.keys())[i] for i in herd_indices]
+    return herd_answer, herd_players
+
 # --- Question Bank ---
 def load_custom_questions():
     try:
@@ -99,9 +124,6 @@ if "question_bank" not in st.session_state:
 # --- Utility for Fuzzy Matching ---
 def clean(text):
     return re.sub(r'[^a-zA-Z0-9]', '', text.strip().lower())
-
-def is_match(a, b, threshold=0.8):
-    return SequenceMatcher(None, clean(a), clean(b)).ratio() >= threshold
 
 # --- Streamlit UI ---
 st.title("🐮 Herd Mentality - Multiplayer")
@@ -138,20 +160,16 @@ if room_id and player_name:
         if st.button("Reveal Herd Answer") and is_host:
             answers = get_all_answers(room_id)
             if len(answers) >= 2:
-                cleaned = [clean(a) for a in answers.values()]
-                freq = {ans: cleaned.count(ans) for ans in set(cleaned)}
-                max_count = max(freq.values())
-                herd_raw = [ans for ans, count in freq.items() if count == max_count]
-
-                if max_count > 1 and len(herd_raw) == 1:
-                    herd_answer = next(original for original in answers.values() if clean(original) == herd_raw[0])
+                herd_result = get_herd_group(answers)
+                if herd_result:
+                    herd_answer, herd_players = herd_result
                     st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
                     for player, answer in answers.items():
-                        match = is_match(answer, herd_answer)
-                        if match:
+                        if player in herd_players:
                             increment_score(room_id, player)
-                        symbol = "✅" if match else "❌"
-                        st.write(f"{player}: {answer} {symbol}")
+                            st.write(f"{player}: {answer} ✅")
+                        else:
+                            st.write(f"{player}: {answer} ❌")
                 else:
                     st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
                     for player, answer in answers.items():
