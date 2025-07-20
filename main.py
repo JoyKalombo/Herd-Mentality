@@ -101,24 +101,25 @@ def get_herd_group(answers, threshold=0.75):
     herd_players = [player for player, ans in answers.items() if get_similarity(ans, herd_text) >= threshold]
     return herd_text, herd_players
 
-# --- Question Bank ---
-def load_custom_questions():
-    try:
-        with open("custom_questions.json", "r") as f:
-            return json.load(f)
-    except:
-        return []
-
-@st.cache_data(show_spinner=False)
-def get_cached_questions(n=20):
-    return [get_ai_prompt() for _ in range(n)]
+# --- Question Bank (Structured & Categorised) ---
+def load_question_bank():
+    def load_json(path):
+        try:
+            with open(path, "r") as f:
+                return json.load(f)
+        except:
+            return []
+    open_qs = load_json("questions-open_ended.json")
+    mc_qs = load_json("questions-multiple_choice.json")
+    pick_qs = load_json("questions-pick_a_player.json")
+    return (
+        [{"type": "open", "question": q} for q in open_qs] +
+        [{"type": "mc", **q} for q in mc_qs] +
+        [{"type": "pick", "question": q} for q in pick_qs]
+    )
 
 if "question_bank" not in st.session_state:
-    questions = load_custom_questions()
-    if not questions:
-        st.warning("No custom questions found. Please add questions to 'custom_questions.json'")
-    st.session_state.question_bank = questions
-
+    st.session_state.question_bank = load_question_bank()
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
@@ -136,9 +137,9 @@ if room_id and player_name:
     if is_host:
         if st.button("🎲 Generate Question"):
             if st.session_state.question_bank:
-                question = random.choice(st.session_state.question_bank)
-                st.session_state.question_bank.remove(question)
-
+                question_data = random.choice(st.session_state.question_bank)
+                st.session_state.question_bank.remove(question_data)
+                question = question_data["question"]
             else:
                 question = get_ai_prompt()
             set_question(room_id, question)
