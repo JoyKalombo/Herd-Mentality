@@ -120,16 +120,22 @@ if room_id and player_name:
             answers = get_all_answers(room_id)
             if len(answers) >= 2:
                 cleaned = [clean(a) for a in answers.values()]
-                herd_raw = max(set(cleaned), key=cleaned.count)
-                herd_answer = next(original for original in answers.values() if clean(original) == herd_raw)
+                freq = {ans: cleaned.count(ans) for ans in set(cleaned)}
+                herd_raw = max(freq, key=freq.get)
 
-                st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
-                for player, answer in answers.items():
-                    match = is_match(answer, herd_answer)
-                    if match:
-                        increment_score(room_id, player)
-                    symbol = "✅" if match else "❌"
-                    st.write(f"{player}: {answer} {symbol}")
+                if freq[herd_raw] > 1:
+                    herd_answer = next(original for original in answers.values() if clean(original) == herd_raw)
+                    st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
+                    for player, answer in answers.items():
+                        match = is_match(answer, herd_answer)
+                        if match:
+                            increment_score(room_id, player)
+                        symbol = "✅" if match else "❌"
+                        st.write(f"{player}: {answer} {symbol}")
+                else:
+                    st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
+                    for player, answer in answers.items():
+                        st.write(f"{player}: {answer} ❌")
 
                 st.markdown("---")
                 st.markdown("### 🏆 Scoreboard")
