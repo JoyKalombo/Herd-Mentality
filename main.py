@@ -4,11 +4,11 @@ import time
 import os
 import re
 import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
-import json
 
 # --- Load Environment Variables ---
 load_dotenv()
@@ -21,12 +21,11 @@ if not api_key:
 if not model:
     raise ValueError("Missing OPENAI_MODEL in .env")
 
-openai.api_key = api_key
+client = OpenAI(api_key=api_key)
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
-    firebase_creds = json.loads(st.secrets["firebase_creds"])
-    cred = credentials.Certificate(firebase_creds)
+    cred = credentials.Certificate("firebase-creds.json")
     firebase_admin.initialize_app(cred, {
         'databaseURL': os.getenv("FIREBASE_DB_URL")
     })
@@ -62,24 +61,24 @@ def clear_room(room_id):
 
 # --- AI Helpers ---
 def get_ai_prompt():
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": "Generate a fun, simple party game question for a game like 'Herd Mentality'. Just return the question."},
             {"role": "user", "content": "Give me a prompt."}
         ]
     )
-    return response.choices[0].message["content"].strip()
+    return response.choices[0].message.content.strip()
 
 def get_ai_answer(prompt):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": "Give a one- or two-word answer to the following question. Only reply with the likely most common or 'herd' answer."},
             {"role": "user", "content": f"{prompt}"}
         ]
     )
-    return response.choices[0].message["content"].strip()
+    return response.choices[0].message.content.strip()
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
