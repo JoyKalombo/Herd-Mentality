@@ -32,8 +32,8 @@ if not firebase_admin._apps:
     })
 
 # --- Firebase Helpers ---
-def set_question(room_id, question):
-    db.reference(f"herd_rooms/{room_id}/question").set(question)
+def set_question(room_id, question_data):
+    db.reference(f"herd_rooms/{room_id}/question").set(question_data)
 
 def get_question(room_id):
     return db.reference(f"herd_rooms/{room_id}/question").get()
@@ -139,23 +139,27 @@ if room_id and player_name:
             if st.session_state.question_bank:
                 question_data = random.choice(st.session_state.question_bank)
                 st.session_state.question_bank.remove(question_data)
-                question = question_data["question"]
             else:
-                question = get_ai_prompt()
-            set_question(room_id, question)
+                question_data = {"type": "open", "question": get_ai_prompt()}
+            set_question(room_id, question_data)
             st.success("New question set for the room!")
 
-    question = get_question(room_id)
-    if question:
-        st.markdown(f"### Question: **{question}**")
-        player_answer = st.text_input("Your Answer")
+    question_data = get_question(room_id)
+    if question_data:
+        st.markdown(f"### Question: **{question_data['question']}**")
+
+        # Display options for multiple choice
+        if question_data.get("type") == "mc" and "options" in question_data:
+            player_answer = st.radio("Choose your answer:", question_data["options"], key="mc")
+        else:
+            player_answer = st.text_input("Your Answer")
 
         if st.button("Submit Answer"):
             submit_answer(room_id, player_name, player_answer.strip())
             st.success("Answer submitted!")
 
         if st.button("Get AI Answer") and is_host:
-            ai_answer = get_ai_answer(question)
+            ai_answer = get_ai_answer(question_data['question'])
             submit_answer(room_id, "AI", ai_answer.strip())
             st.success(f"AI answered: {ai_answer}")
 
