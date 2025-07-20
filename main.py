@@ -69,6 +69,11 @@ def get_herd_group(answers, threshold=0.75):
     max_score = max(scores)
     if max_score == 0:
         return None
+
+    # Check if the max score is tied
+    if scores.count(max_score) > 1:
+        return None
+
     herd_index = scores.index(max_score)
     herd_text = texts[herd_index]
     herd_players = [player for player, ans in answers.items() if get_similarity(ans, herd_text) >= threshold]
