@@ -59,25 +59,31 @@ def get_similarity(a, b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 def get_herd_group(answers, threshold=0.75):
-    texts = list(answers.values())
-    scores = [0] * len(texts)
-    for i in range(len(texts)):
-        for j in range(len(texts)):
-            if i != j and get_similarity(texts[i], texts[j]) >= threshold:
-                scores[i] += 1
+    grouped_answers = {}
+    for player, answer in answers.items():
+        matched = False
+        for key in grouped_answers:
+            if get_similarity(answer, key) >= threshold:
+                grouped_answers[key].append(player)
+                matched = True
+                break
+        if not matched:
+            grouped_answers[answer] = [player]
 
-    max_score = max(scores)
-    if max_score == 0:
+    if not grouped_answers:
         return None
 
-    # Check if the max score is tied
-    if scores.count(max_score) > 1:
+    sorted_groups = sorted(grouped_answers.items(), key=lambda x: len(x[1]), reverse=True)
+    if len(sorted_groups) < 1:
         return None
 
-    herd_index = scores.index(max_score)
-    herd_text = texts[herd_index]
-    herd_players = [player for player, ans in answers.items() if get_similarity(ans, herd_text) >= threshold]
-    return herd_text, herd_players
+    top_size = len(sorted_groups[0][1])
+    top_groups = [group for group in sorted_groups if len(group[1]) == top_size]
+
+    if len(top_groups) == 1 and top_size > 1:
+        return top_groups[0][0], top_groups[0][1]
+    else:
+        return "TIE", grouped_answers
 
 # --- Question Bank ---
 def load_question_bank():
@@ -159,7 +165,7 @@ if room_id and player_name:
                 if len(answers) >= 2:
                     herd_result = get_herd_group(answers)
                     herd_data = {}
-                    if herd_result:
+                    if herd_result and herd_result[0] != "TIE":
                         herd_answer, herd_players = herd_result
                         herd_data = {
                             "herd_answer": herd_answer,
@@ -178,7 +184,8 @@ if room_id and player_name:
                             "herd_answer": None,
                             "herd_players": [],
                             "answers": answers,
-                            "scores": {player: "❌" for player in answers}
+                            "scores": {player: "❌" for player in answers},
+                            "message": "Too many leaders, not enough sheep! 🐑"
                         }
                     set_herd_result(room_id, herd_data)
                 else:
@@ -196,6 +203,8 @@ if room_id and player_name:
                 st.markdown(f"### 🧠 Herd Answer: **{herd_data['herd_answer']}**")
             else:
                 st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
+                if herd_data.get("message"):
+                    st.markdown(f"**{herd_data['message']}**")
 
             for player, answer in herd_data["answers"].items():
                 result = herd_data["scores"].get(player, "❌")
