@@ -95,15 +95,7 @@ room_id = st.text_input("Enter Room Code (e.g., room123)")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
-# Check player name reuse
-name_taken = False
 if room_id and player_name:
-    players = get_player_list(room_id)
-    name_taken = any(clean(p) == clean(player_name) for p in players)
-    if name_taken:
-        st.warning("That player name is already taken in this room.")
-
-if room_id and player_name and not name_taken:
     if is_host:
         if st.button("🎲 Generate Question"):
             question = get_ai_prompt()
@@ -159,7 +151,5 @@ if room_id and player_name and not name_taken:
             st.write(f"- {player}")
     else:
         st.info("No question has been set for this room yet.")
-elif name_taken:
-    st.stop()
 else:
     st.warning("Please enter both room code and your name to play.")
