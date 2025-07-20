@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, db
 from difflib import SequenceMatcher
+import json
 
 # --- Load Environment Variables ---
 load_dotenv()
@@ -59,6 +60,22 @@ def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/question").delete()
     db.reference(f"herd_rooms/{room_id}/answers").delete()
 
+# --- Question Bank ---
+def load_custom_questions():
+    try:
+        with open("custom_questions.json", "r") as f:
+            return json.load(f)
+    except:
+        return []
+
+# --- AI Question Caching ---
+@st.cache_data(show_spinner=False)
+def get_cached_questions(n=20):
+    return [get_ai_prompt() for _ in range(n)]
+
+if "question_bank" not in st.session_state:
+    st.session_state.question_bank = load_custom_questions() + get_cached_questions()
+
 # --- AI Helpers ---
 def get_ai_prompt():
     response = client.chat.completions.create(
@@ -98,7 +115,10 @@ is_host = st.checkbox("I am the host")
 if room_id and player_name:
     if is_host:
         if st.button("🎲 Generate Question"):
-            question = get_ai_prompt()
+            if st.session_state.question_bank:
+                question = st.session_state.question_bank.pop(0)
+            else:
+                question = get_ai_prompt()
             set_question(room_id, question)
             st.success("New question set for the room!")
 
@@ -121,10 +141,11 @@ if room_id and player_name:
             if len(answers) >= 2:
                 cleaned = [clean(a) for a in answers.values()]
                 freq = {ans: cleaned.count(ans) for ans in set(cleaned)}
-                herd_raw = max(freq, key=freq.get)
+                max_count = max(freq.values())
+                herd_raw = [ans for ans, count in freq.items() if count == max_count]
 
-                if freq[herd_raw] > 1:
-                    herd_answer = next(original for original in answers.values() if clean(original) == herd_raw)
+                if max_count > 1 and len(herd_raw) == 1:
+                    herd_answer = next(original for original in answers.values() if clean(original) == herd_raw[0])
                     st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
                     for player, answer in answers.items():
                         match = is_match(answer, herd_answer)
