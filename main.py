@@ -12,7 +12,6 @@ from streamlit_autorefresh import st_autorefresh
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
     cred = credentials.Certificate(json.loads(st.secrets["firebase_creds"]))
-
     firebase_admin.initialize_app(cred, {
         'databaseURL': os.getenv("FIREBASE_DB_URL")
     })
@@ -45,6 +44,12 @@ def get_scores(room_id):
 def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/question").delete()
     db.reference(f"herd_rooms/{room_id}/answers").delete()
+
+def set_herd_result(room_id, herd_data):
+    db.reference(f"herd_rooms/{room_id}/herd_result").set(herd_data)
+
+def get_herd_result(room_id):
+    return db.reference(f"herd_rooms/{room_id}/herd_result").get()
 
 # --- Herd Group Detection ---
 def get_similarity(a, b):
@@ -117,6 +122,7 @@ if room_id and player_name:
             else:
                 question_data = {"type": "open", "question": "What's your favourite food?"}  # Fallback question
             set_question(room_id, question_data)
+            set_herd_result(room_id, None)  # clear previous herd result
             st.success("New question set for the room!")
 
     question_data = get_question(room_id)
@@ -138,32 +144,55 @@ if room_id and player_name:
                 answers = get_all_answers(room_id)
                 if len(answers) >= 2:
                     herd_result = get_herd_group(answers)
+                    herd_data = {}
                     if herd_result:
                         herd_answer, herd_players = herd_result
-                        st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
+                        herd_data = {
+                            "herd_answer": herd_answer,
+                            "herd_players": herd_players,
+                            "answers": answers,
+                            "scores": {}
+                        }
                         for player, answer in answers.items():
                             if player in herd_players:
                                 increment_score(room_id, player)
-                                st.write(f"{player}: {answer} ✅")
+                                herd_data["scores"][player] = "✅"
                             else:
-                                st.write(f"{player}: {answer} ❌")
+                                herd_data["scores"][player] = "❌"
                     else:
-                        st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
-                        for player, answer in answers.items():
-                            st.write(f"{player}: {answer} ❌")
-
-                    st.markdown("---")
-                    st.markdown("### 🏆 Scoreboard")
-                    scores = get_scores(room_id)
-                    sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
-                    for player, score in sorted_scores:
-                        st.write(f"{player}: {score} point(s)")
+                        herd_data = {
+                            "herd_answer": None,
+                            "herd_players": [],
+                            "answers": answers,
+                            "scores": {player: "❌" for player in answers}
+                        }
+                    set_herd_result(room_id, herd_data)
                 else:
                     st.warning("Need at least 2 answers to determine the herd.")
 
             if st.button("Clear Room (Host Only)"):
                 clear_room(room_id)
+                set_herd_result(room_id, None)
                 st.success("Room cleared. Ready for new round.")
+
+        # Display herd result for everyone if available
+        herd_data = get_herd_result(room_id)
+        if herd_data:
+            if herd_data["herd_answer"]:
+                st.markdown(f"### 🧠 Herd Answer: **{herd_data['herd_answer']}**")
+            else:
+                st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
+
+            for player, answer in herd_data["answers"].items():
+                result = herd_data["scores"].get(player, "❌")
+                st.write(f"{player}: {answer} {result}")
+
+            st.markdown("---")
+            st.markdown("### 🏆 Scoreboard")
+            scores = get_scores(room_id)
+            sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
+            for player, score in sorted_scores:
+                st.write(f"{player}: {score} point(s)")
 
         st.markdown("---")
         st.markdown("### 👥 Players in Room")
