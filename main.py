@@ -132,10 +132,10 @@ st.markdown("""
     <p style='text-align: center;'>🤪💭 (win by being a follower... or the one worth following!)</p>
 """, unsafe_allow_html=True)
 
-st.title("🐏 Sheepish Mentality 🐏😂🌾 - Multiplayer Game")
+st.title("🐏 Sheepish Mentality 🐑🧠🤣🌾 - Multiplayer Game")
 st.subheader("Play together in real time with your friends!")
 
-room_id = st.text_input("Enter Room Code (e.g., room123... creativity is allowed)")
+room_id = st.text_input("Enter Room Code (e.g., room123... creativity is allowed... I promise)")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
@@ -165,41 +165,42 @@ if room_id and player_name:
             submit_answer(room_id, player_name, player_answer.strip())
             st.success("Answer submitted!")
 
-        if st.button("Get AI Answer") and is_host:
-            ai_answer = get_ai_answer(question_text)
-            submit_answer(room_id, "AI", ai_answer.strip())
-            st.success(f"AI answered: {ai_answer}")
+        if is_host:
+            if st.button("Get AI Answer"):
+                ai_answer = get_ai_answer(question_text)
+                submit_answer(room_id, "AI", ai_answer.strip())
+                st.success(f"AI answered: {ai_answer}")
 
-        if st.button("Reveal Herd Answer") and is_host:
-            answers = get_all_answers(room_id)
-            if len(answers) >= 2:
-                herd_result = get_herd_group(answers)
-                if herd_result:
-                    herd_answer, herd_players = herd_result
-                    st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
-                    for player, answer in answers.items():
-                        if player in herd_players:
-                            increment_score(room_id, player)
-                            st.write(f"{player}: {answer} ✅")
-                        else:
+            if st.button("Reveal Herd Answer"):
+                answers = get_all_answers(room_id)
+                if len(answers) >= 2:
+                    herd_result = get_herd_group(answers)
+                    if herd_result:
+                        herd_answer, herd_players = herd_result
+                        st.markdown(f"### 🧠 Herd Answer: **{herd_answer}**")
+                        for player, answer in answers.items():
+                            if player in herd_players:
+                                increment_score(room_id, player)
+                                st.write(f"{player}: {answer} ✅")
+                            else:
+                                st.write(f"{player}: {answer} ❌")
+                    else:
+                        st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
+                        for player, answer in answers.items():
                             st.write(f"{player}: {answer} ❌")
+
+                    st.markdown("---")
+                    st.markdown("### 🏆 Scoreboard")
+                    scores = get_scores(room_id)
+                    sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
+                    for player, score in sorted_scores:
+                        st.write(f"{player}: {score} point(s)")
                 else:
-                    st.markdown("### 🧠 Herd Answer: **None! Everyone disagreed!**")
-                    for player, answer in answers.items():
-                        st.write(f"{player}: {answer} ❌")
+                    st.warning("Need at least 2 answers to determine the herd.")
 
-                st.markdown("---")
-                st.markdown("### 🏆 Scoreboard")
-                scores = get_scores(room_id)
-                sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
-                for player, score in sorted_scores:
-                    st.write(f"{player}: {score} point(s)")
-            else:
-                st.warning("Need at least 2 answers to determine the herd.")
-
-        if st.button("Clear Room (Host Only)") and is_host:
-            clear_room(room_id)
-            st.success("Room cleared. Ready for new round.")
+            if st.button("Clear Room (Host Only)"):
+                clear_room(room_id)
+                st.success("Room cleared. Ready for new round.")
 
         st.markdown("---")
         st.markdown("### 👥 Players in Room")
