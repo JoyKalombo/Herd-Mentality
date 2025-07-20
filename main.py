@@ -60,22 +60,6 @@ def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/question").delete()
     db.reference(f"herd_rooms/{room_id}/answers").delete()
 
-# --- Question Bank ---
-def load_custom_questions():
-    try:
-        with open("custom_questions.json", "r") as f:
-            return json.load(f)
-    except:
-        return []
-
-# --- AI Question Caching ---
-@st.cache_data(show_spinner=False)
-def get_cached_questions(n=20):
-    return [get_ai_prompt() for _ in range(n)]
-
-if "question_bank" not in st.session_state:
-    st.session_state.question_bank = load_custom_questions() + get_cached_questions()
-
 # --- AI Helpers ---
 def get_ai_prompt():
     response = client.chat.completions.create(
@@ -96,6 +80,21 @@ def get_ai_answer(prompt):
         ]
     )
     return response.choices[0].message.content.strip()
+
+# --- Question Bank ---
+def load_custom_questions():
+    try:
+        with open("custom_questions.json", "r") as f:
+            return json.load(f)
+    except:
+        return []
+
+@st.cache_data(show_spinner=False)
+def get_cached_questions(n=20):
+    return [get_ai_prompt() for _ in range(n)]
+
+if "question_bank" not in st.session_state:
+    st.session_state.question_bank = load_custom_questions() + get_cached_questions()
 
 # --- Utility for Fuzzy Matching ---
 def clean(text):
