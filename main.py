@@ -46,7 +46,10 @@ def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/answers").delete()
 
 def set_herd_result(room_id, herd_data):
-    db.reference(f"herd_rooms/{room_id}/herd_result").set(herd_data)
+    if herd_data is not None:
+        db.reference(f"herd_rooms/{room_id}/herd_result").set(herd_data)
+    else:
+        db.reference(f"herd_rooms/{room_id}/herd_result").delete()
 
 def get_herd_result(room_id):
     return db.reference(f"herd_rooms/{room_id}/herd_result").get()
@@ -122,7 +125,7 @@ if room_id and player_name:
             else:
                 question_data = {"type": "open", "question": "What's your favourite food?"}  # Fallback question
             set_question(room_id, question_data)
-            db.reference(f"herd_rooms/{room_id}/herd_result").delete()  # clear previous herd result
+            set_herd_result(room_id, None)  # clear previous herd result
             st.success("New question set for the room!")
 
     question_data = get_question(room_id)
@@ -130,8 +133,14 @@ if room_id and player_name:
         question_text = question_data if isinstance(question_data, str) else question_data.get("question", "")
         st.markdown(f"### Question: **{question_text}**")
 
-        if isinstance(question_data, dict) and question_data.get("type") == "mc" and "options" in question_data:
-            player_answer = st.radio("Choose your answer:", question_data["options"], key="mc")
+        if isinstance(question_data, dict):
+            if question_data.get("type") == "mc" and "options" in question_data:
+                player_answer = st.radio("Choose your answer:", question_data["options"], key="mc")
+            elif question_data.get("type") == "pick":
+                current_players = list(get_player_list(room_id).keys())
+                player_answer = st.radio("Pick a player among us:", current_players, key="pick")
+            else:
+                player_answer = st.text_input("Your Answer")
         else:
             player_answer = st.text_input("Your Answer")
 
@@ -172,7 +181,7 @@ if room_id and player_name:
 
             if st.button("Clear Room (Host Only)"):
                 clear_room(room_id)
-                db.reference(f"herd_rooms/{room_id}/herd_result").delete()
+                set_herd_result(room_id, None)
                 st.success("Room cleared. Ready for new round.")
 
         # Display herd result for everyone if available
