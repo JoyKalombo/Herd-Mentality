@@ -93,14 +93,19 @@ def load_question_bank():
                 return json.load(f)
         except:
             return []
+
     open_qs = load_json("questions-open_ended.json")
     mc_qs = load_json("questions-multiple_choice.json")
     pick_qs = load_json("questions-pick_a_player.json")
+    emotion_qs = load_json("questions-emotions.json")
+
     return (
         [{"type": "open", "question": q} for q in open_qs] +
         [{"type": "mc", **q} for q in mc_qs] +
-        [{"type": "pick", "question": q} for q in pick_qs]
+        [{"type": "pick", "question": q} for q in pick_qs] +
+        [{"type": "emotion", "question": q} for q in emotion_qs]
     )
+
 
 if "question_bank" not in st.session_state:
     st.session_state.question_bank = load_question_bank()
@@ -148,6 +153,8 @@ if room_id and player_name:
             elif question_data.get("type") == "pick":
                 current_players = list(get_player_list(room_id).keys())
                 player_answer = st.radio("Pick a player among us:", current_players, key="pick")
+            elif question_data.get("type") == "emotion":
+                player_answer = st.text_input("Which emotion do you think it is?")
             else:
                 player_answer = st.text_input("Your Answer")
         else:
