@@ -128,6 +128,8 @@ if room_id and player_name and not is_host:
     st_autorefresh(interval=3000, key="auto-refresh")  # Refresh every 3 seconds
 
 if room_id and player_name:
+    db.reference(f"herd_rooms/{room_id}/players/{player_name}").set(True)
+
     if is_host:
         if st.button("🎲 Generate Question"):
             if st.session_state.question_bank:
