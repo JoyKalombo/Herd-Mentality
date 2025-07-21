@@ -226,7 +226,3 @@ if room_id and player_name:
         st.info("No question has been set for this room yet.")
 else:
     st.warning("Please enter both room code and your name to play.")
-
-#These are the buttons that take the player to other pages
-st.page_link("Home.py", label="🏠 Home", icon="🏠")
-st.page_link("Rules.py", label="📜 Rules", icon="📖")
