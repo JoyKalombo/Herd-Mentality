@@ -124,6 +124,7 @@ def load_question_bank():
 
 if "question_bank" not in st.session_state:
     st.session_state.question_bank = load_question_bank()
+    st.write("🛠️ Loaded Questions:", st.session_state.question_bank)
 
 
 # --- Utility for Fuzzy Matching ---
