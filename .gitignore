@@ -20,7 +20,7 @@ ENV/
 # Ignore secrets and config
 .env
 firebase-creds.json
-secrets.toml
+.streamlit/secrets.toml
 *.pem
 *.key
 
