@@ -16,34 +16,43 @@ if not firebase_admin._apps:
         'databaseURL': st.secrets["fire_db_url"]
     })
 
+
 # --- Firebase Helpers ---
 def set_question(room_id, question_data):
     db.reference(f"herd_rooms/{room_id}/question").set(question_data)
 
+
 def get_question(room_id):
     return db.reference(f"herd_rooms/{room_id}/question").get()
+
 
 def submit_answer(room_id, player_name, answer):
     db.reference(f"herd_rooms/{room_id}/answers/{player_name}").set(answer)
     db.reference(f"herd_rooms/{room_id}/players/{player_name}").set(True)
 
+
 def get_all_answers(room_id):
     return db.reference(f"herd_rooms/{room_id}/answers").get() or {}
 
+
 def get_player_list(room_id):
     return db.reference(f"herd_rooms/{room_id}/players").get() or {}
+
 
 def increment_score(room_id, player_name):
     ref = db.reference(f"herd_rooms/{room_id}/scores/{player_name}")
     current = ref.get() or 0
     ref.set(current + 1)
 
+
 def get_scores(room_id):
     return db.reference(f"herd_rooms/{room_id}/scores").get() or {}
+
 
 def clear_room(room_id):
     db.reference(f"herd_rooms/{room_id}/question").delete()
     db.reference(f"herd_rooms/{room_id}/answers").delete()
+
 
 def set_herd_result(room_id, herd_data):
     if herd_data is not None:
@@ -51,12 +60,15 @@ def set_herd_result(room_id, herd_data):
     else:
         db.reference(f"herd_rooms/{room_id}/herd_result").delete()
 
+
 def get_herd_result(room_id):
     return db.reference(f"herd_rooms/{room_id}/herd_result").get()
+
 
 # --- Herd Group Detection ---
 def get_similarity(a, b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+
 
 def get_herd_group(answers, threshold=0.75):
     grouped_answers = {}
@@ -85,8 +97,10 @@ def get_herd_group(answers, threshold=0.75):
     else:
         return "TIE", grouped_answers
 
+
 # --- Question Bank ---
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes up from /pages to root
+
 
 def load_question_bank():
     def load_json(filename):
@@ -102,18 +116,20 @@ def load_question_bank():
     pick_qs = load_json("questions-pick_a_player.json")
 
     return (
-        [{"type": "open", "question": q} for q in open_qs] +
-        [{"type": "mc", **q} for q in mc_qs] +
-        [{"type": "pick", "question": q} for q in pick_qs]
+            [{"type": "open", "question": q} for q in open_qs] +
+            [{"type": "mc", **q} for q in mc_qs] +
+            [{"type": "pick", "question": q} for q in pick_qs]
     )
 
 
 if "question_bank" not in st.session_state:
     st.session_state.question_bank = load_question_bank()
 
+
 # --- Utility for Fuzzy Matching ---
 def clean(text):
     return re.sub(r'[^a-zA-Z0-9]', '', text.strip().lower())
+
 
 # --- Streamlit UI ---
 st.markdown("""
