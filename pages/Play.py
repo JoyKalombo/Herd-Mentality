@@ -111,7 +111,7 @@ def clean(text):
 
 # --- Streamlit UI ---
 st.markdown("""
-    <h1 style='text-align: center;'>🐑👥🧑🧍🧍‍♂️🧍‍♀️👨‍👩‍👧‍👦🐑</h1>
+    <h1 style='text-align: center;'>🐑👥🧑🏿🧍🏼🧍🏽‍♂️🧍🏻‍♀️👨🏾‍👩🏼‍👧🏽‍👦🏻🐑</h1>
 """, unsafe_allow_html=True)
 
 st.title("🐏🤔👀 Ready to play? 🐑🧠🤣🌾 - Multiplayer Game")
