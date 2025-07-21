@@ -111,14 +111,10 @@ def clean(text):
 
 # --- Streamlit UI ---
 st.markdown("""
-    <h1 style='text-align: center;'>🐑🐑🐑</h1>
-    <h2 style='text-align: center;'>Welcome to Sheepish Mentality!</h2>
-    <p style='text-align: center;'>🤪💭 (win by being a follower... or the one worth following!)</p>
+    <h1 style='text-align: center;'>🐑👥🧑🧍🧍‍♂️🧍‍♀️👨‍👩‍👧‍👦🐑</h1>
 """, unsafe_allow_html=True)
 
-st.title("🐏 Sheepish Mentality 🐑🧠🤣🌾 - Multiplayer Game")
-st.subheader("Play together in real time with your friends!")
-
+st.title("🐏🤔👀 Ready to play? 🐑🧠🤣🌾 - Multiplayer Game")
 room_id = st.text_input("Enter Room Code (e.g., room123...✨ creativity is allowed... I promise) 🌀")
 player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
