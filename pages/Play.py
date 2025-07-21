@@ -127,6 +127,7 @@ if "question_bank" not in st.session_state:
 
 # TEMPORARY DEBUG: Display loaded questions on main page
 with st.expander("📋 View Loaded Questions (for debugging)"):
+    st.write("DEBUG: Question bank loaded with", len(st.session_state.question_bank), "questions.")
     st.write(st.session_state.question_bank)
 
 
