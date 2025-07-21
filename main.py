@@ -17,10 +17,11 @@ if st.button("Summon Sheep"):
     )
 
 if st.button("Sheepify the Stream"):
-    st.markdown(
-        "🐑🐑🐑 Baa baa black sheep... 🐑🐑🐑\n"
-        "Open the sidebar and press \"Play\" if you want to play the game."
-    )
+    st.markdown("""
+🐑🐑🐑 Baa baa black sheep... 🐑🐑🐑  
+Open the sidebar and press "Play" if you want to play the game.
+""")
+
 
 
 
