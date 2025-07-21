@@ -22,4 +22,4 @@ Use the sidebar to go back and start playing!
 """)
 
 st.page_link("Home.py", label="🏠 Back to Home", icon="🏠")
-st.page_link("Play.py", label="🎮 Go to Game", icon="🎮")
+st.page_link("main.py", label="🎮 Go to Game", icon="🎮")
