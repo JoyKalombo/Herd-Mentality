@@ -86,21 +86,27 @@ def get_herd_group(answers, threshold=0.75):
         return "TIE", grouped_answers
 
 # --- Question Bank ---
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes up from /pages to root
+
 def load_question_bank():
-    def load_json(path):
+    def load_json(filename):
         try:
-            with open(path, "r") as f:
+            with open(os.path.join(BASE_DIR, filename), "r") as f:
                 return json.load(f)
-        except:
+        except Exception as e:
+            print(f"Error loading {filename}: {e}")
             return []
-    open_qs = load_json("../questions-open_ended.json")
-    mc_qs = load_json("../questions-multiple_choice.json")
-    pick_qs = load_json("../questions-pick_a_player.json")
+
+    open_qs = load_json("questions-open_ended.json")
+    mc_qs = load_json("questions-multiple_choice.json")
+    pick_qs = load_json("questions-pick_a_player.json")
+
     return (
         [{"type": "open", "question": q} for q in open_qs] +
         [{"type": "mc", **q} for q in mc_qs] +
         [{"type": "pick", "question": q} for q in pick_qs]
     )
+
 
 if "question_bank" not in st.session_state:
     st.session_state.question_bank = load_question_bank()
