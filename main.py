@@ -124,7 +124,7 @@ player_name = st.text_input("Enter Your Name")
 is_host = st.checkbox("I am the host")
 
 # Auto-refresh for non-hosts to update the question
-if room_id and player_name and not is_host:
+if room_id and player_name:
     st_autorefresh(interval=3000, key="auto-refresh")  # Refresh every 3 seconds
 
 if room_id and player_name:
@@ -219,10 +219,24 @@ if room_id and player_name:
             for player, score in sorted_scores:
                 st.write(f"{player}: {score} point(s)")
 
+        # --- Updated Player List with smart refresh ---
         st.markdown("---")
         st.markdown("### 👥 Players in Room")
-        players = get_player_list(room_id)
-        for player in players:
+
+        current_players = get_player_list(room_id)
+        current_player_count = len(current_players)
+
+        # Only run this if host
+        if is_host:
+            if "prev_player_count" not in st.session_state:
+                st.session_state.prev_player_count = current_player_count
+
+            if current_player_count != st.session_state.prev_player_count:
+                st.session_state.prev_player_count = current_player_count
+                st.toast("🔄 Player list updated!", icon="🧑‍🤝‍🧑")
+                st.rerun()
+
+        for player in current_players:
             st.write(f"- {player}")
     else:
         st.info("No question has been set for this room yet.")
