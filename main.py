@@ -13,7 +13,7 @@ from streamlit_autorefresh import st_autorefresh
 if not firebase_admin._apps:
     cred = credentials.Certificate(json.loads(st.secrets["firebase_creds"]))
     firebase_admin.initialize_app(cred, {
-        'databaseURL': st.secrets["FIREBASE_DB_URL"]
+        'databaseURL': st.secrets["fire_db_url"]
     })
 
 # --- Firebase Helpers ---
