@@ -1,0 +1,10 @@
+# .streamlit/config.toml
+
+[theme]
+base = "dark"                # Sets light theme (can be "dark" or "light")
+
+[server]
+headless = true               # Keeps the app running in headless mode (typical for deployments)
+
+[ui]
+hide_sidebar_nav = true       # Hides the sidebar navigation menu (user can still reveal it manually)

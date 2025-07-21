@@ -93,9 +93,9 @@ def load_question_bank():
                 return json.load(f)
         except:
             return []
-    open_qs = load_json("questions-open_ended.json")
-    mc_qs = load_json("questions-multiple_choice.json")
-    pick_qs = load_json("questions-pick_a_player.json")
+    open_qs = load_json("../questions-open_ended.json")
+    mc_qs = load_json("../questions-multiple_choice.json")
+    pick_qs = load_json("../questions-pick_a_player.json")
     return (
         [{"type": "open", "question": q} for q in open_qs] +
         [{"type": "mc", **q} for q in mc_qs] +
