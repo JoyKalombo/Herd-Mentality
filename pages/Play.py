@@ -103,12 +103,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # goes up from /pages to 
 
 
 def load_question_bank():
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # Get current file's folder
+    root_dir = os.path.abspath(os.path.join(base_dir, ".."))  # Go up to HerdMentality/
+
     def load_json(filename):
         try:
-            with open(os.path.join(BASE_DIR, filename), "r") as f:
+            with open(os.path.join(root_dir, filename), "r") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"Error loading {filename}: {e}")
+            st.warning(f"Error loading {filename}: {e}")
             return []
 
     open_qs = load_json("questions-open_ended.json")
@@ -116,9 +119,9 @@ def load_question_bank():
     pick_qs = load_json("questions-pick_a_player.json")
 
     return (
-            [{"type": "open", "question": q} for q in open_qs] +
-            [{"type": "mc", **q} for q in mc_qs] +
-            [{"type": "pick", "question": q} for q in pick_qs]
+        [{"type": "open", "question": q} for q in open_qs] +
+        [{"type": "mc", **q} for q in mc_qs] +
+        [{"type": "pick", "question": q} for q in pick_qs]
     )
 
 
