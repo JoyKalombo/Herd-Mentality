@@ -334,5 +334,145 @@
   {
     "question": "What’s the biggest betrayal?",
     "options": ["Eating your food", "Talking behind your back", "Cancelling last minute", "Copying your outfit"]
+  },
+  {
+    "question": "What’s the most satisfying button to press?",
+    "options": ["Lift button", "Microwave start", "TV remote", "Big red emergency button"]
+  },
+  {
+    "question": "Which of these is the ultimate comfort show?",
+    "options": ["The Office", "Friends", "Bake Off", "Modern Family"]
+  },
+  {
+    "question": "What’s the best topping for toast?",
+    "options": ["Peanut butter", "Jam", "Avocado", "Butter"]
+  },
+  {
+    "question": "What’s the worst time to get a phone call?",
+    "options": ["In the toilet", "Mid Netflix", "During sleep", "Just after hitting send on a risky message"]
+  },
+  {
+    "question": "Which chore are you most likely to delay?",
+    "options": ["Ironing clothes", "Doing the dishes", "Taking out the bin", "Folding laundry"]
+  },
+  {
+    "question": "What’s the best shape of pasta?",
+    "options": ["Penne", "Fusilli", "Spaghetti", "Ravioli"]
+  },
+  {
+    "question": "What’s the biggest distraction while working from home?",
+    "options": ["Snacks", "The sofa", "Phone", "Random chores"]
+  },
+  {
+    "question": "What’s the best thing to do on a rainy day?",
+    "options": ["Watch films", "Take a nap", "Clean the house", "Eat something warm"]
+  },
+  {
+    "question": "Which of these is the hardest to keep alive?",
+    "options": ["Houseplants", "Sourdough starter", "New Year's resolutions", "Group chats"]
+  },
+  {
+    "question": "What’s the best smell in the world?",
+    "options": ["Fresh bread", "Clean laundry", "Vanilla", "New car smell"]
+  },
+  {
+    "question": "What’s the worst thing to spill?",
+    "options": ["Red wine", "Oil", "Soup", "Coffee"]
+  },
+  {
+    "question": "Which pet is secretly chaotic?",
+    "options": ["Cat", "Parrot", "Rabbit", "Chinchilla"]
+  },
+  {
+    "question": "Which of these is most likely to cause family drama?",
+    "options": ["Group holiday planning", "Game night", "Who’s cooking", "Sharing WiFi"]
+  },
+  {
+    "question": "What’s the most annoying sound?",
+    "options": ["Loud chewing", "Phone on vibrate on a table", "Car alarm", "Mic feedback"]
+  },
+  {
+    "question": "What’s the best quick snack?",
+    "options": ["Toast", "Fruit", "Instant noodles", "Crisps"]
+  },
+  {
+    "question": "What’s the biggest red flag on a first date?",
+    "options": ["Talking about their ex", "Being rude to the waiter", "Oversharing", "Checking their phone constantly"]
+  },
+  {
+    "question": "What’s the best way to end a situationship?",
+    "options": ["Ghost", "Long message", "Face-to-face", "Pretend you're moving to another country"]
+  },
+  {
+    "question": "What’s the most underrated love language?",
+    "options": ["Acts of service", "Quality time", "Words of affirmation", "Memes"]
+  },
+  {
+    "question": "What’s most likely to ruin the vibe of a romantic night?",
+    "options": ["Bad breath", "Phone call from mum", "Forgetting the plan", "Someone mentioning the group chat"]
+  },
+  {
+    "question": "Which gift would raise the most suspicion in a relationship?",
+    "options": ["Expensive jewellery", "Perfume", "Lingerie", "‘Sorry’ card"]
+  },
+  {
+    "question": "Who’s the most annoying coworker?",
+    "options": ["The oversharer", "The micromanager", "The snack thief", "The fake sick-day taker"]
+  },
+  {
+    "question": "What’s the worst time for a meeting?",
+    "options": ["9am Monday", "4:59pm Friday", "During lunch", "Right after drama in the group chat"]
+  },
+  {
+    "question": "What’s the top skill for surviving office life?",
+    "options": ["Small talk", "Pretending to look busy", "Email tone", "Knowing when to mute yourself"]
+  },
+  {
+    "question": "What’s most likely to trigger a Slack meltdown?",
+    "options": ["Someone using too many emojis", "Passive-aggressive messages", "Delayed replies", "Someone typing for ages then deleting"]
+  },
+  {
+    "question": "What’s the biggest lie in a work email?",
+    "options": ["'Hope you're well'", "'Just looping back on this'", "'Per my last email'", "'Happy Monday!'"]
+  },
+  {
+    "question": "What’s the biggest food ick?",
+    "options": ["Loud chewing", "Food in teeth", "Talking with mouth full", "Double dipping"]
+  },
+  {
+    "question": "Which condiment is most likely to start a fight?",
+    "options": ["Ketchup", "Mayonnaise", "Barbecue sauce", "Sriracha"]
+  },
+  {
+    "question": "What’s the worst food to eat on a date?",
+    "options": ["Spaghetti", "Ribs", "Garlic anything", "A whole burrito"]
+  },
+  {
+    "question": "What’s the most elite hangover food?",
+    "options": ["Full English", "Greasy chips", "Chinese takeaway", "Cheesy pasta"]
+  },
+  {
+    "question": "What’s the most stressful kitchen task?",
+    "options": ["Timing everything right", "Chopping onions", "Not burning the garlic", "Doing the dishes after"]
+  },
+   {
+    "question": "If animals could talk, which one would spill the most tea?",
+    "options": ["Cat", "Crow", "Parrot", "Rat"]
+  },
+  {
+    "question": "What would you do if your clone showed up at your door?",
+    "options": ["Fight it", "Let it do your job", "Tell no one", "Cry"]
+  },
+  {
+    "question": "What would be the worst household item to become sentient?",
+    "options": ["Toilet", "Fridge", "Mirror", "Sofa"]
+  },
+  {
+    "question": "If time froze for everyone but you for 24 hours, what would you do first?",
+    "options": ["Nap", "Rob a bakery", "Explore", "Panic"]
+  },
+  {
+    "question": "If you had to replace your hands with something, what would you pick?",
+    "options": ["Tongs", "Whisks", "Paintbrushes", "Phone chargers"]
   }
 ]
