@@ -98,12 +98,14 @@ def load_question_bank():
     mc_qs = load_json("questions-multiple_choice.json")
     pick_qs = load_json("questions-pick_a_player.json")
     emotion_qs = load_json("questions-emotions.json")
+    emojis_qs = load_json("questions-emojis.json")
 
     return (
         [{"type": "open", "question": q} for q in open_qs] +
         [{"type": "mc", **q} for q in mc_qs] +
         [{"type": "pick", "question": q} for q in pick_qs] +
-        [{"type": "emotion", "question": q} for q in emotion_qs]
+        [{"type": "emotion", "question": q} for q in emotion_qs] +
+        [{"type": "emoji", "question": q} for q in emojis_qs]
     )
 
 
