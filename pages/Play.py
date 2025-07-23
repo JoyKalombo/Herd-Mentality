@@ -99,13 +99,15 @@ def load_question_bank():
     pick_qs = load_json("questions-pick_a_player.json")
     emotion_qs = load_json("questions-emotions.json")
     emojis_qs = load_json("questions-emojis.json")
+    phrase_qs = load_json("questions-phrase_completion.json")
 
     return (
         [{"type": "open", "question": q} for q in open_qs] +
         [{"type": "mc", **q} for q in mc_qs] +
         [{"type": "pick", "question": q} for q in pick_qs] +
         [{"type": "emotion", "question": q} for q in emotion_qs] +
-        [{"type": "emoji", "question": q} for q in emojis_qs]
+        [{"type": "emoji", "question": q} for q in emojis_qs] +
+        [{"type": "phrase", "question": q} for q in phrase_qs]
     )
 
 
@@ -157,6 +159,8 @@ if room_id and player_name:
             elif question_data.get("type") == "pick":
                 current_players = list(get_player_list(room_id).keys())
                 player_answer = st.radio("Pick a player among us:", current_players, key="pick")
+            elif question_data.get("type") == "phrase":
+                player_answer = st.text_input("Complete the phrase.")
             else:
                 player_answer = st.text_input("Your Answer")
         else:
