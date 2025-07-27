@@ -8,13 +8,15 @@ from firebase_admin import credentials, db
 from difflib import SequenceMatcher
 import json
 from streamlit_autorefresh import st_autorefresh
+import io
 
 # --- Initialise Firebase ---
 if not firebase_admin._apps:
-    cred = credentials.Certificate(json.loads(st.secrets["firebase_creds"]))
+    cred = credentials.Certificate(json.load(io.StringIO(st.secrets["firebase_creds"])))
     firebase_admin.initialize_app(cred, {
         'databaseURL': st.secrets["firebase_db_url"]
     })
+
 
 # --- Firebase Helpers ---
 def set_question(room_id, question_data):
