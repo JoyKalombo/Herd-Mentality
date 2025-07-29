@@ -276,6 +276,46 @@
     "options": ["💅", "🙄", "😏", "🤭"]
   },
   {
+    "question": "Which emoji best says 'I'm not mad, just disappointed'?",
+    "options": ["😐", "😔", "🙄", "😤"]
+  },
+  {
+    "question": "Which emoji screams 'main character energy'?",
+    "options": ["💅", "😎", "👑", "🔥"]
+  },
+  {
+    "question": "Which emoji would you send if you're lying but want to seem innocent?",
+    "options": ["😇", "😅", "🙃", "👀"]
+  },
+  {
+    "question": "What emoji do you send when you're flirting but pretending not to?",
+    "options": ["😏", "😬", "😉", "🤭"]
+  },
+  {
+    "question": "Which emoji gives off 'I'm exhausted but still fabulous' energy?",
+    "options": ["🥴", "😩", "💅", "🫠"]
+  },
+  {
+    "question": "Which emoji best represents 'chaos'?",
+    "options": ["🤪", "🤯", "🔥", "🤡"]
+  },
+  {
+    "question": "What emoji would you use to hype someone up?",
+    "options": ["🔥", "👏", "💪", "🚀"]
+  },
+  {
+    "question": "Which emoji is the most unserious?",
+    "options": ["🤡", "🫣", "👀", "🙃"]
+  },
+  {
+    "question": "What emoji do you send when you're in denial but pretending you're fine?",
+    "options": ["😅", "😭", "😶‍🌫️", "🥲"]
+  },
+  {
+    "question": "Which emoji screams 'delulu is the solulu'?",
+    "options": ["✨", "🧚", "🫶", "🧠"]
+  },
+  {
     "question": "What’s the best background noise while working?",
     "options": ["Music", "Rain sounds", "TV show", "Silence"]
   },
@@ -474,5 +514,201 @@
   {
     "question": "If you had to replace your hands with something, what would you pick?",
     "options": ["Tongs", "Whisks", "Paintbrushes", "Phone chargers"]
+  },
+  {
+    "question": "A meeting is on Wednesday. It was brought forward by two days. What day is the meeting now?",
+    "options": ["Monday", "Friday", "Still Wednesday", "Tuesday"]
+  },
+  {
+    "question": "We do something biweekly. What does that mean?",
+    "options": ["Twice a week", "Once every two weeks", "Every other week", "Depends who you ask"]
+  },
+  {
+    "question": "How do you pronounce ‘plantain’?",
+    "options": ["Plan-TAIN", "Plan-TIN"]
+  },
+  {
+    "question": "Today is Monday. Your friend arrives 'next Thursday'. When do they arrive?",
+    "options": ["3 days time", "10 days time"]
+  },
+  {
+    "question": "Someone says 'I’ll be there in a sec.' How long are they really going to be?",
+    "options": ["1 second", "Less than a minute", "5–10 minutes", "Longer than you'd like"]
+  },
+  {
+    "question": "Your appointment was moved forward by one hour. What does that mean?",
+    "options": ["It’s an hour earlier", "It’s an hour later"]
+  },
+  {
+    "question": "When someone says 'half seven', what time is it?",
+    "options": ["6:30", "7:30", "Three thirty"]
+  },
+  {
+    "question": "How do you say the word 'route'?",
+    "options": ["Root", "Rowt", "Either way is fine", "Depends on the sentence"]
+  },
+  {
+    "question": "Which side is the driver’s seat on?",
+    "options": ["Right", "Left"]
+  },
+  {
+    "question": "What does 'I'll be there soon' usually mean?",
+    "options": ["5 minutes", "10 minutes", "Over 20 minutes", "I haven’t even left"]
+  },
+  {
+    "question": "Your alarm goes off at 6:00am. You hit snooze twice (9 minutes each). What time is it now?",
+    "options": ["6:18am", "6:20am", "6:30am", "Too early to care"]
+  },
+  {
+    "question": "You borrow £20. You give back £10. How much do you owe?",
+    "options": ["£10", "£20", "£30", "It depends"]
+  },
+  {
+    "question": "A bat and ball cost £1.10. The bat costs £1 more than the ball. How much does the ball cost?",
+    "options": ["10p", "5p", "£1", "None of the above"]
+  },
+  {
+    "question": "Your birthday is on a Saturday this year. What day is it next year?",
+    "options": ["Saturday","Sunday", "Monday", "Depends if this year's a leap year", "Depends if next year's a leap year"]
+  },
+  {
+    "question": "You’re told to meet someone at midday. What time do you show up?",
+    "options": ["12:00pm", "12:00am", "Noon", "I need clarification"]
+  },
+  {
+    "question": "A party starts at 9pm and finishes at 12pm. How long is the party?",
+    "options": ["3 hours", "27 hours", "I need clarification"]
+  },
+  {
+    "question": "What’s heavier?",
+    "options": ["A kilo of feathers", "A kilo of bricks", "Same weight", "Depends on the wind"]
+  },
+  {
+    "question": "Your friend says ‘let’s link in the evening.’ What time is that?",
+    "options": ["5pm", "6pm", "7pm", "Whenever the sun’s gone"]
+  },
+  {
+    "question": "A recipe says ‘add one cup of flour’. What size cup?",
+    "options": ["Mug", "Measuring cup", "Teacup", "Whatever's clean"]
+  },
+  {
+    "question": "Someone says they’re ‘round the corner’. Where are they?",
+    "options": ["A minute away", "around the corner", "On the same street", "Still at home", "Already inside"]
+  },
+  {
+    "question": "What does 'I'm five minutes away' *actually* mean?",
+    "options": ["I'm outside", "I'm 15 minutes away", "I've just left", "I'm lying"]
+  },
+  {
+    "question": "What does 'I’ll let you know' usually mean?",
+    "options": ["I forgot", "I'm saying 'no' softly", "They're thinking about it", "You’ll never hear from them again"]
+  },
+  {
+    "question": "Your mate says 'Let’s go out this weekend.' What day do they mean?",
+    "options": ["Friday", "Saturday", "Sunday", "Depends who’s asking"]
+  },
+  {
+    "question": "Someone says 'We should meet early.' What time is that?",
+    "options": ["7am", "9am", "11am", "After breakfast, but before vibes"]
+  },
+  {
+    "question": "What time is 'lunch'?",
+    "options": ["12pm", "1pm", "2pm", "When the work gets long"]
+  },
+  {
+    "question": "How long is a 'couple of minutes'?",
+    "options": ["2", "3–5", "Up to 10", "They’re still getting dressed"]
+  },
+  {
+    "question": "When someone says 'Do what you want,' what do they actually mean?",
+    "options": ["You’re in trouble", "You have permission", "They’re testing you", "Proceed with fear"]
+  },
+  {
+    "question": "Someone says 'I'll be there shortly.' How far are they?",
+    "options": ["Already outside", "5 minutes away", "Just left", "Still in bed"]
+  },
+  {
+    "question": "You’re told to bring a 'few' snacks. How many?",
+    "options": ["2–3", "4–5", "More than 5", "Depends on who's hosting"]
+  },
+  {
+    "question": "The movie starts at 7. What time do you arrive?",
+    "options": ["6:45", "6:59", "7:10", "When the trailers end"]
+  },
+  {
+    "question": "What does 'I might come' actually mean?",
+    "options": ["I'm not coming", "There’s a 50/50 chance", "I'm seeing who else is going", "I'm assessing my other options", "I forgot already"]
+  },
+  {
+    "question": "What does 'no worries if not' actually mean?",
+    "options": ["I *am* slightly worried", "Please say yes", "I’m just being polite", "You'd better do it"]
+  },
+  {
+    "question": "When someone says 'I'm not being funny but…', what’s next?",
+    "options": ["Insult incoming", "Genuine feedback", "Sarcasm", "Brace yourself", "Something funny"]
+  },
+  {
+    "question": "If you say 'Let me know,' what are you really saying?",
+    "options": ["I'm not chasing you", "I’m done here", "It’s up to you", "You probably won’t"]
+  },
+  {
+    "question": "What does 'Let's touch base' usually mean?",
+    "options": ["We need to talk", "I forgot what we’re doing", "No idea but sounds productive", "Pretend we're aligned"]
+  },
+  {
+    "question": "What does 'It is what it is' really mean?",
+    "options": ["I’ve given up", "I’m numb", "Can’t be bothered", "Life's a mess", "It just is"]
+  },
+  {
+    "question": "You hear 'We move.' What’s the actual message?",
+    "options": ["We're surviving", "We lost but we pretend we didn’t", "Nothing makes sense", "Keep going anyway"]
+  },
+  {
+    "question": "When someone says 'Just to play devil’s advocate…'",
+    "options": ["Prepare for unnecessary conflict", "They disagree", "They love arguments", "They want to be edgy", "They want to be helpful"]
+  },
+  {
+    "question": "What does 'Perception is reality' even mean?",
+    "options": ["Image > truth", "Facts are optional", "Fake it ‘til you make it", "Sounds deep but what?"]
+  },
+  {
+    "question": "You hear 'Let’s put a pin in that.' What happens now?",
+    "options": ["It’s never coming back", "We’ll circle back", "They’re avoiding the question", "Pinned... forever"]
+  },
+  {
+    "question": "What does 'We’ll take this offline' mean?",
+    "options": ["Stop talking", "This is awkward", "You’re exposing too much", "Let’s fight privately"]
+  },
+  {
+    "question": "What’s really meant by 'Good vibes only'?",
+    "options": ["Don’t bring your feelings here", "Pretend everything’s fine", "We’re not doing emotional labour", "Mask on"]
+  },
+  {
+    "question": "What does 'Just keep doing what you’re doing' actually mean?",
+    "options": ["I have no feedback", "I wasn’t listening", "Stay average", "You’re not my problem"]
+  },
+  {
+    "question": "What’s meant by 'We'll circle back'?",
+    "options": ["We won’t", "I hope you forget", "Maybe in Q4", "I just need this convo to end"]
+  },
+  {
+    "question": "Someone says 'Let’s not reinvent the wheel.' What do they mean?",
+    "options": ["Be lazy but efficient", "Copy someone else", "We’re doing the bare minimum", "No budget for innovation"]
+  },
+  {
+    "question": "What does 'We’ll play it by ear' mean?",
+    "options": ["I don’t know the plan", "Let’s vibe it", "It depends on my mood", "We’re winging it"]
+  },
+  {
+    "question": "What does 'It’s above my pay grade' really mean?",
+    "options": ["Not my problem", "Blame management", "I don’t want to get involved", "I’m ducking responsibility"]
+  },
+  {
+    "question": "What does 'We’re all on a journey' usually mean?",
+    "options": ["Nothing makes sense", "There’s no destination", "We’re all struggling", "Sounds deep but is vague"]
+  },
+  {
+    "question": "Someone says 'I hear you.' What do they probably mean?",
+    "options": ["I disagree but won't say it", "I’m done listening", "You're overreacting", "Let's move on"]
   }
 ]
