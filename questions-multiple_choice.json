@@ -316,6 +316,54 @@
     "options": ["✨", "🧚", "🫶", "🧠"]
   },
   {
+    "question": "When I send 🙃, I actually mean...",
+    "options": ["I'm not okay", "That was shady", "I hate it here", "Just vibes"]
+  },
+  {
+    "question": "Sending 💀 after someone’s joke means...",
+    "options": ["I actually laughed", "That was wild", "You’re wrong but funny", "I’m done"]
+  },
+  {
+    "question": "If I hit you with 👀, I'm saying...",
+    "options": ["Explain yourself", "I'm watching", "That was juicy", "I'm lurking"]
+  },
+  {
+    "question": "Dropping 🧼 in a convo means...",
+    "options": ["Clean it up", "That was pure", "You're innocent", "You lying"]
+  },
+  {
+    "question": "Which pair says 'messy but I’m thriving'?",
+    "options": ["🤡🔥", "😅💅", "🙃🧨", "🥲👑"]
+  },
+  {
+    "question": "Which combo says 'flirty but unserious'?",
+    "options": ["😏😉", "🤭💀", "👀😇", "😬✨"]
+  },
+  {
+    "question": "Which duo screams 'delusional & loving it'?",
+    "options": ["🧚✨", "🫠💅", "🤯💖", "👑🥲"]
+  },
+  {
+    "question": "Which combo says 'I’m emotionally unavailable but fashionable'?",
+    "options": ["💅🧊", "🧥🙃", "👠🧠", "😎🫥"]
+  },
+  {
+    "question": "When I send 🙃, I actually mean...",
+    "options": ["I'm not okay", "That was shady", "I hate it here", "Just vibes"]
+  },
+  {
+    "question": "Sending 💀 after someone’s joke means...",
+    "options": ["I actually laughed", "That was wild", "You’re wrong but funny", "I’m done"]
+  },
+  {
+    "question": "If I hit you with 👀, I'm saying...",
+    "options": ["Explain yourself", "I'm watching", "That was juicy", "I'm lurking"]
+  },
+  {
+    "question": "Dropping 🧼 in a convo means...",
+    "options": ["Clean it up", "That was pure", "You're innocent", "You lying"]
+  },
+  {
     "question": "What’s the best background noise while working?",
     "options": ["Music", "Rain sounds", "TV show", "Silence"]
   },
@@ -710,5 +758,9 @@
   {
     "question": "Someone says 'I hear you.' What do they probably mean?",
     "options": ["I disagree but won't say it", "I’m done listening", "You're overreacting", "Let's move on"]
+  },
+  {
+    "question": "What does ASAP *actually* mean?",
+    "options": ["As Slow As Possible", "All Snacks Are Prioritised", "Almost Sleeping And Procrastinating", "Any Sauce Adds Power"]
   }
 ]
